@@ -7,7 +7,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./modules/system/desktop.nix
+    ../modules/system/desktop
   ];
 
   # Bootloader.
@@ -42,7 +42,7 @@
     LC_TIME = "sv_SE.UTF-8";
   };
 
-  # X11, desktop, audio, etc. configured in modules/system/desktop.nix
+  # X11, desktop, audio, etc. configured in ../modules/system/desktop/
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -60,7 +60,7 @@
 
   # Firefox enabled in desktop module
 
-  # Git is now configured in home.nix
+  # Git is now configured in ../modules/home/
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

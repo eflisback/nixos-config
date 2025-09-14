@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  # X11 and desktop environment
+  # X11 base configuration
   services.xserver = {
     enable = true;
     xkb = {
@@ -9,10 +9,6 @@
       variant = "";
     };
   };
-
-  # Display manager and desktop environment
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
 
   # Console keymap
   console.keyMap = "sv-latin1";

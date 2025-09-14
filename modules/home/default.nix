@@ -2,9 +2,9 @@
 
 {
   imports = [
-    ./modules/home/shell.nix
-    ./modules/home/development.nix
-    ./modules/home/apps.nix
+    ./shell.nix
+    ./development.nix
+    ./apps.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
