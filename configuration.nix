@@ -5,10 +5,10 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ./modules/system/desktop.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -42,40 +42,7 @@
     LC_TIME = "sv_SE.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "se";
-    variant = "";
-  };
-
-  # Configure console keymap
-  console.keyMap = "sv-latin1";
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
+  # X11, desktop, audio, etc. configured in modules/system/desktop.nix
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -85,27 +52,21 @@
     isNormalUser = true;
     description = "Ebbe Flisbäck";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    #  thunderbird
-    ];
+    shell = pkgs.zsh;
   };
 
-  # Install firefox.
-  programs.firefox.enable = true;
+  # Enable zsh system-wide
+  programs.zsh.enable = true;
 
-  # Install git.
-  programs.git = {
-    enable = true;
-    config = {
-      user.name = "Ebbe Flisbäck";
-      user.email = "ebbe.flisback@gmail.com";
-      init.defaultBranch = "main";
-      push.autoSetupRemote = true;
-    };
-  };
+  # Firefox enabled in desktop module
+
+  # Git is now configured in home.nix
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  # Enable flakes
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -113,6 +74,7 @@
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
      vscode
+     git  # Needed for flakes
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
