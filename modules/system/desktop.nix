@@ -4,14 +4,15 @@
   # X11 and desktop environment
   services.xserver = {
     enable = true;
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
-
     xkb = {
       layout = "se";
       variant = "";
     };
   };
+
+  # Display manager and desktop environment
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
 
   # Console keymap
   console.keyMap = "sv-latin1";

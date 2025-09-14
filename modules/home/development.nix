@@ -8,6 +8,7 @@
     claude-code
     vscode
     git
+    nixfmt-rfc-style
   ];
 
   # Git configuration

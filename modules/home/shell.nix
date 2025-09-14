@@ -30,5 +30,8 @@
   home.packages = with pkgs; [
     zoxide
     eza
+    font-awesome
+    nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
   ];
 }
