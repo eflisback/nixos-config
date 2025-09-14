@@ -1,28 +1,43 @@
 {
-  description = "Ebbe's NixOS configuration";
+    description = "Ebbe's NixOS";
 
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-  };
+    inputs = {
+	    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+        nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
+        home-manager.url = "github:nix-community/home-manager";
+        home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
-    nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./nixos/configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.ebbe = import ./modules/home;
-          }
-        ];
-      };
+        firefox-addons = {
+            url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+
     };
-  };
+
+    outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
+	let 
+	    lib = nixpkgs.lib;
+	    system = "x86_64-linux";
+	    pkgs = nixpkgs.legacyPackages.${system};
+        pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
+	in
+    {
+		nixosConfigurations.nixos = lib.nixosSystem {
+                inherit system;
+				modules = [
+                    ./system/configuration.nix
+                    home-manager.nixosModules.home-manager
+                    {
+                        home-manager.users.ebbe = import ./home;
+                        home-manager.extraSpecialArgs = {
+                            inherit pkgs-unstable inputs;
+                        };
+                    }
+				];
+                specialArgs = {
+                    inherit pkgs-unstable;
+                };
+        };
+
+    };
 }
