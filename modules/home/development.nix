@@ -2,12 +2,10 @@
 
 {
   home.packages = with pkgs; [
-    # Scala and JVM
-    scala_3
-    openjdk17
+    scala
+    openjdk
     sbt
-
-    # Development tools
+    claude-code
     vscode
     git
   ];

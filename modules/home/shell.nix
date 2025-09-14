@@ -9,13 +9,13 @@
     syntaxHighlighting.enable = true;
 
     shellAliases = {
-      ll = "ls -la";
-      la = "ls -A";
-      l = "ls -CF";
-      cd = "z";  # Use zoxide for cd
+      ls = "eza --icons always";
+      ll = "eza -bhl --icons --group-directories-first";
+      la = "eza -abhl --icons --group-directories-first";
+      lt = "eza --tree --level=2 --icons";
     };
 
-    initExtra = ''
+    initContent = ''
       eval "$(zoxide init zsh)"
     '';
 
@@ -29,8 +29,6 @@
   # Shell tools
   home.packages = with pkgs; [
     zoxide
-    fzf
-    ripgrep
-    fd
+    eza
   ];
 }
