@@ -3,8 +3,6 @@
 
 {
   environment.systemPackages = with pkgs; [
-    vscode
-    claude-code
     bat
     btop
     eza

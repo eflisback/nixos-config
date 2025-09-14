@@ -1,7 +1,7 @@
 {
   home.sessionVariables = {
 	     BROWSER = "firefox";
-	     EDITOR = "nvim";
+	     EDITOR = "code";
 	     TERMINAL = "kitty";
 	     NIXOS_OZONE_WL = "1";
 	     QT_QPA_PLATFORMTHEME = "gtk3";
@@ -23,6 +23,10 @@
 	     XDG_SESSION_TYPE = "wayland";
 	     GTK_USE_PORTAL = "1";
 	     NIXOS_XDG_OPEN_USE_PORTAL = "1";
+         
+         # Force dark mode for applications
+         GTK_APPLICATION_PREFER_DARK_THEME = "1";
+         QT_STYLE_OVERRIDE = "adwaita-dark";
 	     XDG_CACHE_HOME = "\${HOME}/.cache";
 	     XDG_CONFIG_HOME = "\${HOME}/.config";
 	     #XDG_BIN_HOME = "\${HOME}/.local/bin";

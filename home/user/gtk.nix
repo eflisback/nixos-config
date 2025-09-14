@@ -35,4 +35,23 @@
     };
 
   };
+
+  # System-wide dark mode preference via dconf
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+      gtk-theme = "Catppuccin-Macchiato-Compact-Blue-dark";
+      icon-theme = "Papirus-Dark";
+      cursor-theme = "Catppuccin-Macchiato-Blue";
+    };
+  };
+
+  # Qt theming
+  qt = {
+    enable = true;
+    platformTheme.name = "gtk3";
+    style = {
+      name = "adwaita-dark";
+    };
+  };
 }

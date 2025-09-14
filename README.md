@@ -5,28 +5,42 @@ Ebbe's NixOS configuration using Flakes and Home-Manager for declarative system 
 ## How It Works
 
 **NixOS vs Home-Manager:**
-- **NixOS** (`configuration.nix`): System-wide settings (services, bootloader, networking, system packages)
-- **Home-Manager** (`home.nix`): User-specific settings (dotfiles, user applications, shell config)
+- **NixOS** (`system/`): System-wide settings (services, bootloader, networking, system packages)
+- **Home-Manager** (`home/`): User-specific settings (dotfiles, user applications, shell config)
 
-**Flakes & Versioning:**
+**Configuration Architecture:**
 - `flake.nix` defines inputs (nixpkgs version) and system configuration
 - `flake.lock` locks package versions for reproducibility
+- Mixed approach: Home-Manager configs + traditional dotfiles in `home/config/`
 - Updates happen explicitly via `nix flake update`, not automatically
 
 ## Structure
 
 ```
 ├── flake.nix                   # Main flake with inputs and system config
-├── configuration.nix           # System-wide NixOS config  
-├── home.nix                    # Home-Manager entry point
-├── hardware-configuration.nix  # Auto-generated hardware config
-└── modules/
-    ├── system/                 # System-level modules
-    │   └── desktop.nix         # Desktop environment, audio, printing
-    └── home/                   # User-level modules  
-        ├── shell.nix           # Zsh, aliases, fonts, shell tools
-        ├── development.nix     # Dev tools (languages, editors, git)
-        └── apps.nix            # User applications (Discord, etc.)
+├── system/
+│   ├── configuration.nix       # System-wide NixOS config entry point
+│   ├── hardware-configuration.nix  # Auto-generated hardware config
+│   └── modules/                # Modular system configuration
+│       ├── boot.nix            # Boot configuration
+│       ├── hyprland.nix        # Hyprland system packages
+│       ├── networking.nix      # Network settings
+│       ├── packages.nix        # System packages
+│       ├── sound.nix           # Audio configuration
+│       └── ...                 # Other system modules
+└── home/
+    ├── default.nix             # Home-Manager entry point
+    ├── user/                   # Home-Manager modules
+    │   ├── programs.nix        # Program configurations (Firefox, OBS, Hyprland)
+    │   ├── packages.nix        # User packages
+    │   ├── shell.nix           # Shell configuration
+    │   ├── git.nix             # Git configuration
+    │   └── config.nix          # Dotfile symlinks to home/config/
+    └── config/                 # Traditional dotfiles
+        ├── hypr/               # Hyprland configuration files
+        ├── waybar/             # Waybar configuration
+        ├── kitty/              # Kitty terminal configuration
+        └── ...                 # Other application configs
 ```
 
 ## Essential Commands
@@ -103,22 +117,26 @@ sudo nix-collect-garbage -d
 
 ## Workflow Examples
 
-**Adding a new development tool:**
-1. Edit `modules/home/development.nix`, add package to `home.packages`
+**Adding a new user package:**
+1. Edit `home/user/packages.nix`, add package to `home.packages`
 2. Run `home-manager switch --flake .#ebbe`
 
 **System configuration change:**
-1. Edit `configuration.nix` or system module
+1. Edit relevant file in `system/modules/`
 2. Run `sudo nixos-rebuild switch --flake .#nixos`
+
+**Modifying application dotfiles:**
+1. Edit files in `home/config/` (e.g., `home/config/hypr/` for Hyprland)
+2. Run `home-manager switch --flake .#ebbe` to sync changes
 
 **Getting latest package versions:**
 1. Run `nix flake update` 
 2. Rebuild both: `sudo nixos-rebuild switch --flake .#nixos && home-manager switch --flake .#ebbe`
 
 ## Current Setup
-- **Host**: orbit
-- **Desktop**: GNOME with GDM
+- **Host**: Desktop/Laptop with NixOS
+- **Desktop**: Hyprland with Waybar
 - **Shell**: Zsh with Oh-My-Zsh
-- **Editor**: VSCode with Nix formatting support
-- **Languages**: Scala, Java (OpenJDK), Nix
-- **Fonts**: Nerd Fonts (Fira Code, JetBrains Mono), Font Awesome
+- **Terminal**: Kitty
+- **Applications**: Firefox, Vesktop (Discord), Steam, Thunderbird, Telegram
+- **Configuration**: Mixed Home-Manager + traditional dotfiles approach

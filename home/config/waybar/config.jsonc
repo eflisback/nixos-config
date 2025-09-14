@@ -12,12 +12,12 @@
     "modules-center": ["hyprland/window"],
     "modules-right": [
         "tray",
-        "custom/updates",
+        "network",
+        "battery",
         "hyprland/language",
         "pulseaudio",
         "pulseaudio#microphone",
-        "clock",
-        "custom/weather"
+        "clock"
     ],
 
     "hyprland/window": {
@@ -37,19 +37,12 @@
         "format-ru": "RU",
         "format-ka": "GE"
     },
-   "custom/weather" : {
-        "tooltip" : true,
-        "format" : "{}",
-        "interval" : 30,
-        "exec" : "~/.config/waybar/scripts/waybar-wttr.py",
-        "return-type" : "json"
-    },
     "tray": {
         "icon-size": 16,
         "spacing": 10
     },
     "clock": {
-        "format": "{: %R   %d/%m}",
+        "format": "{:%R   %d/%m}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "pulseaudio": {
@@ -72,11 +65,29 @@
     },
     "pulseaudio#microphone": {
         "format": "{format_source}",
-        "format-source": "🎙{volume}%",
-        "format-source-muted": "🎙Muted",
+        "format-source": "🎙 {volume}%",
+        "format-source-muted": "🎙 Muted",
         "on-click": "pamixer --default-source -t",
         "on-scroll-up": "pamixer --default-source -i 5",
         "on-scroll-down": "pamixer --default-source -d 5",
         "scroll-step": 5
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+        "tooltip": false,
+        "format-wifi": " {essid}",
+        "format-ethernet": " Connected",
+        "format-disconnected": "⚠ Disconnected",
+        "on-click": "nm-connection-editor"
     }
 }

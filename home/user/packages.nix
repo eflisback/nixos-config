@@ -14,9 +14,10 @@
     # Misc
     vscode
     claude-code
- 
+    godot-mono
+
     # Bluetooth
-    pkgs.blueberry
+    bluetui
 
     # Social
     vesktop
@@ -31,10 +32,11 @@
       ];
     })
 
-    # Utils
     hyprshot
     catppuccin-cursors.macchiatoBlue
     catppuccin-gtk
     papirus-folders
+    pamixer          # Volume control
+    brightnessctl    # Brightness control
   ];
 }

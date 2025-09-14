@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
 {
   programs.firefox = {
     enable = true;
@@ -14,16 +14,49 @@
             ublock-origin
             youtube-shorts-block
         ];
+
+        settings = {
+          # Enable dark mode preferences
+          "ui.systemUsesDarkTheme" = 1;
+          "layout.css.prefers-color-scheme.content-override" = 0;
+          
+          # Use system theme for Firefox interface
+          "extensions.activeThemeID" = "default-theme@mozilla.org";
+          "browser.theme.dark-private-windows" = true;
+          
+          # Dark scrollbars
+          "widget.content.gtk-theme-override" = "Adwaita:dark";
+        };
     };
   };
 
   programs.home-manager.enable = true;
 
+  programs.obs-studio = {
+    enable = true;
+
+    # optional Nvidia hardware acceleration
+    package = (
+      pkgs.obs-studio.override {
+        cudaSupport = true;
+      }
+    );
+
+    plugins = with pkgs.obs-studio-plugins; [
+      wlrobs
+      obs-backgroundremoval
+      obs-pipewire-audio-capture
+      obs-vaapi #optional AMD hardware acceleration
+      obs-gstreamer
+      obs-vkcapture
+    ];
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
       monitor = [
-        "HDMI-A-1,2560x1440@164.835999,0x0,1"
+        "eDP-1,1920x1200@59.95,0x0,1.0"
       ];
 
       exec-once = [
@@ -33,11 +66,12 @@
         "waybar & hyprpaper"
         "swayidle -w"
         "nwg-look -a"
-        "[workspace 2 silent] firefox"
-        "[workspace 10 silent] telegram-desktop"
-        "[workspace 10 silent] vesktop"
-        "[workspace 3 silent] thunderbird"
-        "[workspace 5 silent] steam"
+        # Removed auto-starting applications - launch manually when needed
+        # "[workspace 2 silent] firefox"
+        # "[workspace 10 silent] telegram-desktop"
+        # "[workspace 10 silent] vesktop"
+        # "[workspace 3 silent] thunderbird"
+        # "[workspace 5 silent] steam"
       ];
 
       "$mainMod" = "SUPER";
@@ -47,17 +81,24 @@
         "$mainMod, Q, killactive"
         "$mainMod, M, exec, wlogout --protocol layer-shell"
         "$mainMod, E, exec, thunar"
-        "$mainMod, V, togglefloating"
+        "$mainMod, A, togglefloating"
         "$mainMod, D, exec, wofi --show drun"
         "$mainMod, P, pseudo"
         "$mainMod, S, togglesplit"
-        "$mainMod SHIFT, Q, exec, swaylock"
+        "$mainMod SHIFT, L, exec, swaylock"
         ", PRINT, exec, hyprshot -m region --clipboard-only"
 
-        "$mainMod, h, movefocus, l"
-        "$mainMod, l, movefocus, r"
-        "$mainMod, k, movefocus, u"
-        "$mainMod, j, movefocus, d"
+        # Focus with Alt+direction
+        "ALT, h, movefocus, l"
+        "ALT, l, movefocus, r"
+        "ALT, k, movefocus, u"
+        "ALT, j, movefocus, d"
+
+        # Move windows with Super+direction
+        "$mainMod, h, movewindow, l"
+        "$mainMod, l, movewindow, r"
+        "$mainMod, k, movewindow, u"
+        "$mainMod, j, movewindow, d"
 
         "$mainMod, 1, workspace, 1"
         "$mainMod, 2, workspace, 2"
@@ -86,12 +127,10 @@
         "$mainMod CTRL, k, resizeactive, 0 -10"
         "$mainMod CTRL, j, resizeactive, 0 10"
 
-        "$mainMod SHIFT, l, movewindow, r"
-        "$mainMod SHIFT, h, movewindow, l"
-        "$mainMod SHIFT, k, movewindow, u"
-        "$mainMod SHIFT, j, movewindow, d"
+        # Resize with Super+Ctrl+direction
+        # Note: Super+direction now moves windows
 
-        "$mainMod, b, exec, firefox"
+        "$mainMod, W, exec, firefox"
         "$mainMod, c, exec, telegram-desktop"
       ];
 
@@ -199,11 +238,7 @@
         "float, class:^(vesktop)$,title:^(Discord Popout)$"
         "pin, class:^(vesktop)$,title:^(Discord Popout)$"
         "float, class:^(steam)$,title:^(Friends List)$"
-        "workspace 1, class:^(kitty)$"
-        "workspace 2, class:^(firefox)$"
-        "workspace 5, class:^(steam)$"
-        "workspace 10, class:^(org.telegram.desktop)$"
-        "workspace 10, class:^(vesktop)$"
+        # Removed workspace assignments - let applications open where needed
       ];
     };
   };
