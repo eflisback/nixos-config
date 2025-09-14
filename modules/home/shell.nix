@@ -9,6 +9,9 @@
     syntaxHighlighting.enable = true;
 
     shellAliases = {
+      rebuild = "sudo nixos-rebuild switch --flake ~/nixos-config/#nixos";
+      update = "cd ~/nixos-config && sudo nix flake update";
+
       ls = "eza --icons always";
       ll = "eza -bhl --icons --group-directories-first";
       la = "eza -abhl --icons --group-directories-first";
@@ -30,8 +33,5 @@
   home.packages = with pkgs; [
     zoxide
     eza
-    font-awesome
-    nerd-fonts.fira-code
-    nerd-fonts.jetbrains-mono
   ];
 }
