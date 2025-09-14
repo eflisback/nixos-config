@@ -2,13 +2,20 @@
 
 {
   home.packages = with pkgs; [
+    # Scala & Java
     scala
-    openjdk
     sbt
-    claude-code
+    openjdk
+
+    # NodeJS
+    nodejs
+    nodePackages.pnpm
+
+    # Misc
     vscode
     git
     nixfmt-rfc-style
+    claude-code
   ];
 
   # Git configuration
