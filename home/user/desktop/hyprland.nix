@@ -3,19 +3,10 @@
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
-      # Monitor configuration
+      # Monitor configuration moved to host-specific configs
+      # Default fallback monitor config
       monitor = [
-        # Desktop dual monitor setup
-        # 144Hz ASUS monitor on left, 60Hz Samsung on right
-        "DP-3,1920x1080@144,0x0,1.0"
-        "HDMI-A-1,1920x1080@60,1920x0,1.0"
-        # Laptop monitor (disabled when not connected)
-        "eDP-1,1920x1200@59.95,0x0,1.0"
-      ];
-
-      # Workspace assignment
-      workspace = [
-        "1, monitor:DP-3, default:true"
+        ",preferred,auto,1.0"
       ];
 
       # Startup applications
