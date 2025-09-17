@@ -8,6 +8,7 @@
     ./programs.nix
     ./environment.nix
     ./desktop
+    ./xdg.nix
   ];
 
   nixpkgs = {
