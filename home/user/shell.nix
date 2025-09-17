@@ -16,7 +16,7 @@
       la = "eza -abhl --icons --group-directories-first";
       lt = "eza --tree --level=2 --icons";
       
-      code = "code 2>/dev/null";
+      code = "codium 2>/dev/null";
     };
 
     initContent = ''

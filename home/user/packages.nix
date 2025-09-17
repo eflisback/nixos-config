@@ -12,7 +12,7 @@
     nodePackages.pnpm
 
     # Misc
-    vscode
+    vscodium
     claude-code
     godot-mono
 
