@@ -1,5 +1,5 @@
 { ... }:
 
 {
-    time.timeZone = "Europe/Stockholm";
+  time.timeZone = "Europe/Stockholm";
 }

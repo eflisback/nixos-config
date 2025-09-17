@@ -37,7 +37,7 @@
 
       # Variables
       "$mainMod" = "SUPER";
-      
+
       # Cursor configuration
       cursor = {
         no_hardware_cursors = true;
@@ -110,7 +110,7 @@
 
         # Window resizing (using direct resize instead of submap)
         "$mainMod SHIFT, h, resizeactive, -30 0"
-        "$mainMod SHIFT, l, resizeactive, 30 0" 
+        "$mainMod SHIFT, l, resizeactive, 30 0"
         "$mainMod SHIFT, k, resizeactive, 0 -30"
         "$mainMod SHIFT, j, resizeactive, 0 30"
       ];
@@ -237,14 +237,14 @@
         "fullscreen, class:(wlogout)"
         "idleinhibit focus, class:(mpv)"
         "float, title:^(Media viewer)$"
-        
+
         # Picture in picture windows
         "float, title:^(Picture-in-Picture)$"
         "pin, title:^(Picture-in-Picture)$"
         "float, class:^(vesktop)$,title:^(Discord Popout)$"
         "pin, class:^(vesktop)$,title:^(Discord Popout)$"
         "float, class:^(steam)$,title:^(Friends List)$"
-        
+
         # Removed workspace assignments - let applications open where needed
       ];
     };

@@ -3,9 +3,9 @@ let
   email = "ebbe.flisback@gmail.com";
 in
 {
-    programs.git = {
-        enable = true;
-        userName = userName;
-        userEmail = email;
-    };
+  programs.git = {
+    enable = true;
+    userName = userName;
+    userEmail = email;
+  };
 }

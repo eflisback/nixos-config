@@ -1,19 +1,19 @@
-{ config, pkgs, ... }: 
+{ config, pkgs, ... }:
 
 {
- hardware = {
+  hardware = {
     bluetooth.enable = true;
 
-	graphics.enable = true;
-	
-	nvidia = {
+    graphics.enable = true;
+
+    nvidia = {
       modesetting.enable = true;
       powerManagement.enable = false;
       open = false;
       nvidiaSettings = true;
       package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
- };
- 
- services.xserver.videoDrivers = [ "nvidia" ];
+  };
+
+  services.xserver.videoDrivers = [ "nvidia" ];
 }

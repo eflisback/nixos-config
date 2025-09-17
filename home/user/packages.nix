@@ -22,6 +22,9 @@
     # Social
     vesktop
 
+    # Nix
+    nixfmt-rfc-style
+
     # Gaming
     pkgs.steam
     pkgs.steam-run
@@ -36,7 +39,7 @@
     catppuccin-cursors.macchiatoBlue
     catppuccin-gtk
     papirus-folders
-    pamixer          # Volume control
-    brightnessctl    # Brightness control
+    pamixer # Volume control
+    brightnessctl # Brightness control
   ];
 }

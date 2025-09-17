@@ -1,8 +1,8 @@
-{ config, pkgs, ... }: 
+{ config, pkgs, ... }:
 
 {
 
- xdg.portal = {
+  xdg.portal = {
     enable = true;
     wlr.enable = false;
     xdgOpenUsePortal = false;
@@ -10,34 +10,34 @@
       pkgs.xdg-desktop-portal-hyprland
       pkgs.xdg-desktop-portal-gtk
     ];
- };
+  };
 
- programs = {
-	steam = { 
-		enable = true;
-		remotePlay.openFirewall = true;
-		dedicatedServer.openFirewall = true;
-	};
+  programs = {
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+    };
 
     hyprland = {
+      enable = true;
+
+      xwayland = {
         enable = true;
+      };
 
-        xwayland = {
-            enable = true;
-        };
-
-        portalPackage = pkgs.xdg-desktop-portal-hyprland;
+      portalPackage = pkgs.xdg-desktop-portal-hyprland;
     };
 
     gnupg = {
-		agent = {
-			enable = true;
-			enableSSHSupport = true;
-		};
-	};
+      agent = {
+        enable = true;
+        enableSSHSupport = true;
+      };
+    };
 
     zsh.enable = true;
-	mtr.enable = true;
- };
+    mtr.enable = true;
+  };
 
 }
