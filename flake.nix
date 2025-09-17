@@ -47,6 +47,24 @@
             inherit pkgs-unstable;
           };
         };
+
+        orbit = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./hosts/orbit
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.users.ebbe = import ./hosts/orbit/home.nix;
+              home-manager.backupFileExtension = "backup";
+              home-manager.extraSpecialArgs = {
+                inherit pkgs-unstable inputs;
+              };
+            }
+          ];
+          specialArgs = {
+            inherit pkgs-unstable;
+          };
+        };
       };
 
     };

@@ -8,7 +8,7 @@
     syntaxHighlighting.enable = true;
 
     shellAliases = {
-      rebuild = "sudo nixos-rebuild switch --flake ~/nixos-config/#nixos";
+      # rebuild alias moved to host-specific configs
       update = "cd ~/nixos-config && sudo nix flake update";
 
       ls = "eza --icons always";
