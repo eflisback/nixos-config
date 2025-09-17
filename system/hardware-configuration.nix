@@ -8,20 +8,18 @@
     [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "vmd" "nvme" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/5cfddf30-b8fc-42ef-87c1-512d39b6ed88";
+    { device = "/dev/disk/by-uuid/c9a22f95-8b2c-4102-8430-f89d9f7b8c3f";
       fsType = "ext4";
     };
 
-  boot.initrd.luks.devices."luks-e1054643-0ac4-4711-87d9-9efbf2c8a6a4".device = "/dev/disk/by-uuid/e1054643-0ac4-4711-87d9-9efbf2c8a6a4";
-
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/35C1-113A";
+    { device = "/dev/disk/by-uuid/338B-7AD0";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
@@ -33,7 +31,7 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp0s20f3.useDHCP = lib.mkDefault true;
+  # networking.interfaces.eno1.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

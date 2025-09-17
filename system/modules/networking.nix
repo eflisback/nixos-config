@@ -2,7 +2,7 @@
 
 {
   networking = {
-	hostName = "orbit";
+	hostName = "nucleus";
 	networkmanager.enable = true;
   };
 }

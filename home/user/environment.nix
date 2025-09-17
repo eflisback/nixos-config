@@ -1,7 +1,7 @@
 {
   home.sessionVariables = {
 	     BROWSER = "firefox";
-	     EDITOR = "code";
+	     EDITOR = "codium";
 	     TERMINAL = "kitty";
 	     NIXOS_OZONE_WL = "1";
 	     QT_QPA_PLATFORMTHEME = "gtk3";
@@ -12,10 +12,8 @@
 	     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
 	     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
          GTK_CSD = "0";
-	     WLR_DRM_DEVICES = "/dev/dri/card0";
-	     WLR_NO_HARDWARE_CURSORS = "1"; 
 	     CLUTTER_BACKEND = "wayland";
-	     WLR_RENDERER = "vulkan";
+	     WLR_RENDERER = "auto";
          XCURSOR_SIZE = "32";
          GTK_THEME="Catppuccin-Macchiato-Compact-Blue-Dark";
 	     XDG_CURRENT_DESKTOP = "Hyprland";

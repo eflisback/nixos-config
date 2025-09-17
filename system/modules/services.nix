@@ -9,8 +9,6 @@
 	xserver = {
 		enable = true;
 		xkb.layout = "se";
-        xkb.options = "grp:alt_shift_toggle, caps:swapescape";
-
 	};
 
 	displayManager = {
