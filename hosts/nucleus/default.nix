@@ -1,12 +1,12 @@
 { config, pkgs, ... }:
 
 {
+  # Host-specific configuration for the desktop workstation.
   imports = [
     ./hardware-configuration.nix
     ../../system/common.nix
   ];
 
-  # Host-specific configuration
   networking.hostName = "nucleus";
   
   # Desktop-specific hardware configuration

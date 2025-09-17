@@ -6,6 +6,7 @@
 }:
 
 {
+  # Boot configuration using systemd-boot (modern UEFI bootloader).
   boot = {
     tmp.cleanOnBoot = true;
     loader = {

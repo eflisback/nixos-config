@@ -1,15 +1,17 @@
 { config, pkgs, ... }:
 
 {
+  # User account configuration.
   users.users.ebbe = {
     isNormalUser = true;
     shell = pkgs.zsh;
+    # Groups provide permissions for system resources and services.
     extraGroups = [
-      "wheel"
+      "wheel" # sudo access
       "qemu"
       "kvm"
-      "libvirtd"
-      "networkmanager"
+      "libvirtd" # virtualization
+      "networkmanager" # network configuration
     ];
   };
 }

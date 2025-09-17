@@ -1,6 +1,8 @@
 { pkgs, pkgs-unstable, ... }:
 
 {
+  # User-specific packages installed in the home environment.
+  # These are available only to this user, separate from system-wide packages.
   home.packages = with pkgs; [
     # Scala & Java
     scala

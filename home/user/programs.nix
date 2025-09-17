@@ -1,5 +1,7 @@
 { inputs, pkgs, ... }:
 {
+  # Application configurations managed by Home-Manager.
+  # These generate config files declaratively instead of manual editing.
   programs.firefox = {
     enable = true;
 

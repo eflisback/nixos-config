@@ -1,6 +1,8 @@
 {
   description = "Ebbe's NixOS";
 
+  # Flake inputs define external dependencies - similar to specifying repositories in Arch.
+  # These are the "sources" that this configuration pulls packages and modules from.
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
@@ -14,6 +16,7 @@
 
   };
 
+  # Outputs define what this flake provides - the actual system configurations.
   outputs =
     {
       self,
@@ -29,7 +32,9 @@
       pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
     in
     {
+      # System configurations for each host machine.
       nixosConfigurations = {
+        # Desktop workstation configuration.
         nucleus = lib.nixosSystem {
           inherit system;
           modules = [
@@ -48,6 +53,7 @@
           };
         };
 
+        # Laptop configuration.
         orbit = lib.nixosSystem {
           inherit system;
           modules = [

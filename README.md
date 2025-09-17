@@ -37,7 +37,7 @@ nixos-config/
 ### System Management
 
 ```bash
-# Apply system configuration for nucleus
+# Apply system configuration for nucleus (Desktop host)
 sudo nixos-rebuild switch --flake .#nucleus
 
 # Test configuration without switching
@@ -149,7 +149,7 @@ sudo nixos-rebuild switch --flake .#<hostname>
 
 ## Current Setup
 
-- **Host**: nucleus (desktop)
+- **Hosts**: nucleus (desktop), orbit (laptop)
 - **Desktop Environment**: Hyprland with Waybar
 - **Shell**: Zsh with Oh-My-Zsh
 - **Terminal**: Kitty
