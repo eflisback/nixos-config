@@ -3,7 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../system/common.nix
+    ../../system
   ];
 
   # Host-specific configuration

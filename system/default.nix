@@ -1,8 +1,8 @@
-{ ... }:
+{ config, pkgs, ... }:
 
 {
-  # System-wide module imports - each file configures a specific aspect of the system.
-  # This modular approach keeps configuration organized and maintainable.
+  # Common system configuration shared across all hosts.
+  # Host-specific configs in hosts/ directory import this for base functionality.
   imports = [
     ./boot.nix
     ./fonts.nix
@@ -18,8 +18,8 @@
     ./security.nix
     ./services.nix
     ./sound.nix
-    ./time.nix
     ./theme.nix
+    ./time.nix
     ./users.nix
     ./virtualisation.nix
   ];

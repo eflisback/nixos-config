@@ -4,7 +4,7 @@
   # Host-specific configuration for the desktop workstation.
   imports = [
     ./hardware-configuration.nix
-    ../../system/common.nix
+    ../../system
   ];
 
   networking.hostName = "nucleus";

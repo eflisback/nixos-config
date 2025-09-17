@@ -13,13 +13,12 @@ nixos-config/
 │       ├── hardware-configuration.nix
 │       └── home.nix            # Home-Manager config for nucleus
 ├── system/                     # Shared system configuration
-│   ├── common.nix              # Common system settings
-│   └── modules/                # Modular system components
-│       ├── boot.nix            # Bootloader configuration
-│       ├── networking.nix      # Network settings
-│       ├── packages.nix        # System packages
-│       ├── hardware.nix        # Shared hardware settings
-│       └── ...                 # Other system modules
+│   ├── default.nix             # Common system settings
+│   ├── boot.nix                # Bootloader configuration
+│   ├── networking.nix          # Network settings
+│   ├── packages.nix            # System packages
+│   ├── hardware.nix            # Shared hardware settings
+│   └── ...                     # Other system modules
 └── home/                       # Shared user configuration
     ├── common.nix              # Common home settings
     ├── user/                   # Home-Manager modules
@@ -92,7 +91,7 @@ sudo nix-collect-garbage -d
    {
      imports = [
        ./hardware-configuration.nix
-       ../../system/common.nix
+       ../../system
      ];
      
      networking.hostName = "laptop";
@@ -123,7 +122,7 @@ sudo nix-collect-garbage -d
 ## Configuration Changes
 
 ### System-wide Changes
-Edit files in `system/modules/` then rebuild:
+Edit files in `system/` then rebuild:
 ```bash
 sudo nixos-rebuild switch --flake .#nucleus
 ```
