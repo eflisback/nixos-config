@@ -14,7 +14,8 @@
          GTK_CSD = "0";
 	     CLUTTER_BACKEND = "wayland";
 	     WLR_RENDERER = "auto";
-         XCURSOR_SIZE = "32";
+         XCURSOR_SIZE = "24";
+         WLR_NO_HARDWARE_CURSORS = "1";
          GTK_THEME="Catppuccin-Macchiato-Compact-Blue-Dark";
 	     XDG_CURRENT_DESKTOP = "Hyprland";
 	     XDG_SESSION_DESKTOP = "Hyprland";

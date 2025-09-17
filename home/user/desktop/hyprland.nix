@@ -37,6 +37,12 @@
 
       # Variables
       "$mainMod" = "SUPER";
+      
+      # Cursor configuration
+      cursor = {
+        no_hardware_cursors = true;
+        enable_hyprcursor = true;
+      };
 
       # Key bindings
       bind = [
