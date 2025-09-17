@@ -35,6 +35,7 @@
       ];
     })
 
+    woeusb
     hyprshot
     catppuccin-cursors.macchiatoBlue
     catppuccin-gtk

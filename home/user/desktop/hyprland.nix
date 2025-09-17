@@ -13,10 +13,9 @@
         "eDP-1,1920x1200@59.95,0x0,1.0"
       ];
 
-      # Workspace assignments for dual monitor setup
+      # Workspace assignment
       workspace = [
         "1, monitor:DP-3, default:true"
-        "2, monitor:HDMI-A-1, default:true"
       ];
 
       # Startup applications
@@ -62,13 +61,23 @@
         "SHIFT, PRINT, exec, hyprshot -m window --clipboard-only"
         "CTRL, PRINT, exec, hyprshot -m output --clipboard-only"
 
-        # Focus with Alt+direction
+        # Focus with Super+arrow keys (like i3)
+        "$mainMod, Left, movefocus, l"
+        "$mainMod, Right, movefocus, r"
+        "$mainMod, Up, movefocus, u"
+        "$mainMod, Down, movefocus, d"
+
+        # Focus with Alt+hjkl (alternative)
         "ALT, h, movefocus, l"
         "ALT, l, movefocus, r"
         "ALT, k, movefocus, u"
         "ALT, j, movefocus, d"
 
-        # Move windows with Super+direction
+        # Move windows between monitors with Super+Shift+left/right
+        "$mainMod SHIFT, Left, movewindow, mon:l"
+        "$mainMod SHIFT, Right, movewindow, mon:r"
+
+        # Move windows with Super+hjkl
         "$mainMod, h, movewindow, l"
         "$mainMod, l, movewindow, r"
         "$mainMod, k, movewindow, u"
