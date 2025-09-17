@@ -6,7 +6,6 @@ in
     ".config/nvim".source = "${configDir}/nvim";
     ".config/wallpapers".source = "${configDir}/wallpapers";
     ".config/kitty".source = "${configDir}/kitty";
-    ".config/neofetch".source = "${configDir}/neofetch";
     ".config/swayidle".source = "${configDir}/swayidle";
     ".config/swaylock".source = "${configDir}/swaylock";
     ".config/wlogout".source = "${configDir}/wlogout";
