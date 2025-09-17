@@ -1,142 +1,157 @@
 # NixOS Configuration
 
-Ebbe's NixOS configuration using Flakes and Home-Manager for declarative system and user environment management.
-
-## How It Works
-
-**NixOS vs Home-Manager:**
-- **NixOS** (`system/`): System-wide settings (services, bootloader, networking, system packages)
-- **Home-Manager** (`home/`): User-specific settings (dotfiles, user applications, shell config)
-
-**Configuration Architecture:**
-- `flake.nix` defines inputs (nixpkgs version) and system configuration
-- `flake.lock` locks package versions for reproducibility
-- Mixed approach: Home-Manager configs + traditional dotfiles in `home/config/`
-- Updates happen explicitly via `nix flake update`, not automatically
+A modular NixOS configuration using Flakes and Home-Manager with support for multiple hosts.
 
 ## Structure
 
 ```
-├── flake.nix                   # Main flake with inputs and system config
-├── system/
-│   ├── configuration.nix       # System-wide NixOS config entry point
-│   ├── hardware-configuration.nix  # Auto-generated hardware config
-│   └── modules/                # Modular system configuration
-│       ├── boot.nix            # Boot configuration
-│       ├── hyprland.nix        # Hyprland system packages
+nixos-config/
+├── flake.nix                    # Main flake definition
+├── hosts/                      # Host-specific configurations
+│   └── nucleus/                # Desktop configuration
+│       ├── default.nix         # System config for nucleus
+│       ├── hardware-configuration.nix
+│       └── home.nix            # Home-Manager config for nucleus
+├── system/                     # Shared system configuration
+│   ├── common.nix              # Common system settings
+│   └── modules/                # Modular system components
+│       ├── boot.nix            # Bootloader configuration
 │       ├── networking.nix      # Network settings
 │       ├── packages.nix        # System packages
-│       ├── sound.nix           # Audio configuration
+│       ├── hardware.nix        # Shared hardware settings
 │       └── ...                 # Other system modules
-└── home/
-    ├── default.nix             # Home-Manager entry point
+└── home/                       # Shared user configuration
+    ├── common.nix              # Common home settings
     ├── user/                   # Home-Manager modules
-    │   ├── programs.nix        # Program configurations (Firefox, OBS, Hyprland)
     │   ├── packages.nix        # User packages
-    │   ├── shell.nix           # Shell configuration
-    │   ├── git.nix             # Git configuration
-    │   └── config.nix          # Dotfile symlinks to home/config/
+    │   ├── programs.nix        # Application configs
+    │   ├── desktop/            # Desktop environment configs
+    │   │   ├── hyprland.nix    # Hyprland configuration
+    │   │   └── hyprpaper.nix   # Wallpaper configuration
+    │   └── ...                 # Other user modules
     └── config/                 # Traditional dotfiles
-        ├── hypr/               # Hyprland configuration files
-        ├── waybar/             # Waybar configuration
-        ├── kitty/              # Kitty terminal configuration
-        └── ...                 # Other application configs
 ```
 
-## Essential Commands
+## Usage
 
 ### System Management
+
 ```bash
-# Apply system changes (requires sudo)
-sudo nixos-rebuild switch --flake .#nixos
+# Apply system configuration for nucleus
+sudo nixos-rebuild switch --flake .#nucleus
 
-# Apply user environment changes (no sudo)
-home-manager switch --flake .#ebbe
-
-# Test system config without switching
-sudo nixos-rebuild test --flake .#nixos
-```
-
-### Package Management
-```bash
-# Search for packages
-nix search nixpkgs <package-name>
-
-# Check current package version
-nix eval nixpkgs#<package>.version
-
-# Update all packages to latest versions
-nix flake update
-# Then rebuild system and home
-sudo nixos-rebuild switch --flake .#nixos
-home-manager switch --flake .#ebbe
-```
-
-### Adding Packages
-- **System packages** (available to all users): Add to `configuration.nix` or `modules/system/`
-- **User packages** (your personal tools): Add to relevant module in `modules/home/`
-- **Development tools**: `modules/home/development.nix`
-- **Applications**: `modules/home/apps.nix` 
-- **Shell tools**: `modules/home/shell.nix`
-
-### Flake Operations
-```bash
-# Show flake info
-nix flake show
-
-# Update specific input only
-nix flake lock --update-input nixpkgs
+# Test configuration without switching
+sudo nixos-rebuild test --flake .#nucleus
 
 # Check flake for issues
 nix flake check
 ```
 
-### Generation Cleanup
+### Package Management
+
 ```bash
-# List system generations (shows boot menu entries)
+# Search for packages
+nix search nixpkgs <package-name>
+
+# Update all packages
+nix flake update
+sudo nixos-rebuild switch --flake .#nucleus
+
+# Update specific input
+nix flake lock --update-input nixpkgs
+```
+
+### Generation Management
+
+```bash
+# List system generations
 sudo nix-env --list-generations --profile /nix/var/nix/profiles/system
 
-# List user environment generations
-nix-env --list-generations
-
-# Keep last 5 system generations, delete older ones
+# Delete old generations (keep last 5)
 sudo nix-env --delete-generations +5 --profile /nix/var/nix/profiles/system
 
-# Delete specific generation by number
-sudo nix-env --delete-generations 42 --profile /nix/var/nix/profiles/system
-
-# Delete old user generations
-nix-env --delete-generations old
-
-# Clean up unreferenced packages from nix store
-sudo nix-collect-garbage
-
-# Full cleanup (removes ALL old generations and unused packages)
+# Clean up nix store
 sudo nix-collect-garbage -d
 ```
 
-## Workflow Examples
+## Adding New Hosts
 
-**Adding a new user package:**
-1. Edit `home/user/packages.nix`, add package to `home.packages`
-2. Run `home-manager switch --flake .#ebbe`
+1. Create new host directory:
+   ```bash
+   mkdir hosts/laptop
+   ```
 
-**System configuration change:**
-1. Edit relevant file in `system/modules/`
-2. Run `sudo nixos-rebuild switch --flake .#nixos`
+2. Copy hardware configuration:
+   ```bash
+   nixos-generate-config --dir hosts/laptop
+   ```
 
-**Modifying application dotfiles:**
-1. Edit files in `home/config/` (e.g., `home/config/hypr/` for Hyprland)
-2. Run `home-manager switch --flake .#ebbe` to sync changes
+3. Create `hosts/laptop/default.nix`:
+   ```nix
+   { config, pkgs, ... }:
+   {
+     imports = [
+       ./hardware-configuration.nix
+       ../../system/common.nix
+     ];
+     
+     networking.hostName = "laptop";
+     # Laptop-specific system settings
+   }
+   ```
 
-**Getting latest package versions:**
-1. Run `nix flake update` 
-2. Rebuild both: `sudo nixos-rebuild switch --flake .#nixos && home-manager switch --flake .#ebbe`
+4. Create `hosts/laptop/home.nix`:
+   ```nix
+   { inputs, pkgs, ... }:
+   {
+     imports = [ ../../home/common.nix ];
+     
+     # Laptop-specific home settings
+     wayland.windowManager.hyprland.settings = {
+       monitor = [ "eDP-1,1920x1200@60,0x0,1.0" ];
+     };
+   }
+   ```
+
+5. Add to `flake.nix`:
+   ```nix
+   nixosConfigurations.laptop = lib.nixosSystem {
+     # ... similar to nucleus config
+   };
+   ```
+
+## Configuration Changes
+
+### System-wide Changes
+Edit files in `system/modules/` then rebuild:
+```bash
+sudo nixos-rebuild switch --flake .#nucleus
+```
+
+### User Environment Changes
+Edit files in `home/user/` then rebuild:
+```bash
+sudo nixos-rebuild switch --flake .#nucleus
+```
+
+### Host-specific Changes
+Edit files in `hosts/*/` then rebuild for that host:
+```bash
+sudo nixos-rebuild switch --flake .#<hostname>
+```
+
+## Key Features
+
+- **Host-specific configurations**: Easy to manage different settings per machine
+- **Modular design**: Shared modules with host-specific overrides
+- **Integrated Home-Manager**: User configurations managed through system rebuild
+- **No direct home-manager command needed**: Everything managed through `nixos-rebuild`
 
 ## Current Setup
-- **Host**: Desktop/Laptop with NixOS
-- **Desktop**: Hyprland with Waybar
+
+- **Host**: nucleus (desktop)
+- **Desktop Environment**: Hyprland with Waybar
 - **Shell**: Zsh with Oh-My-Zsh
 - **Terminal**: Kitty
-- **Applications**: Firefox, Vesktop (Discord), Steam, Thunderbird, Telegram
-- **Configuration**: Mixed Home-Manager + traditional dotfiles approach
+- **User**: ebbe
+- **State Version**: 25.05

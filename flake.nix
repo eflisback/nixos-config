@@ -29,21 +29,23 @@
       pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
     in
     {
-      nixosConfigurations.nixos = lib.nixosSystem {
-        inherit system;
-        modules = [
-          ./system/configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.users.ebbe = import ./home;
-            home-manager.backupFileExtension = "backup";
-            home-manager.extraSpecialArgs = {
-              inherit pkgs-unstable inputs;
-            };
-          }
-        ];
-        specialArgs = {
-          inherit pkgs-unstable;
+      nixosConfigurations = {
+        nucleus = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./hosts/nucleus
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.users.ebbe = import ./hosts/nucleus/home.nix;
+              home-manager.backupFileExtension = "backup";
+              home-manager.extraSpecialArgs = {
+                inherit pkgs-unstable inputs;
+              };
+            }
+          ];
+          specialArgs = {
+            inherit pkgs-unstable;
+          };
         };
       };
 
