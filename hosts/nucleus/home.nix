@@ -6,6 +6,10 @@
   ];
 
   # Desktop-specific home configuration
+  programs.zsh.shellAliases = {
+    rebuild = "sudo nixos-rebuild switch --flake ~/nixos-config/#nucleus";
+  };
+
   wayland.windowManager.hyprland.settings = {
     # Desktop dual monitor setup
     monitor = [
