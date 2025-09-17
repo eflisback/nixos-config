@@ -29,6 +29,7 @@
                     home-manager.nixosModules.home-manager
                     {
                         home-manager.users.ebbe = import ./home;
+                        home-manager.backupFileExtension = "backup";
                         home-manager.extraSpecialArgs = {
                             inherit pkgs-unstable inputs;
                         };
