@@ -1,12 +1,17 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   boot = {
-	tmp.cleanOnBoot = true;
-	loader = {
-		systemd-boot.enable = true;
-		efi.canTouchEfiVariables = true;
-		timeout = 5;
-	};
+    tmp.cleanOnBoot = true;
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+      timeout = 5;
+    };
   };
 }

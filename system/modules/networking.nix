@@ -2,7 +2,7 @@
 
 {
   networking = {
-	hostName = "nucleus";
-	networkmanager.enable = true;
+    hostName = "nucleus";
+    networkmanager.enable = true;
   };
 }

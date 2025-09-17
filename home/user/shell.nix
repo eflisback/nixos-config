@@ -15,7 +15,7 @@
       ll = "eza -bhl --icons --group-directories-first";
       la = "eza -abhl --icons --group-directories-first";
       lt = "eza --tree --level=2 --icons";
-      
+
       code = "codium 2>/dev/null";
     };
 
@@ -25,7 +25,10 @@
 
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "sudo" ];
+      plugins = [
+        "git"
+        "sudo"
+      ];
       theme = "robbyrussell";
     };
   };

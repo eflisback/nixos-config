@@ -4,29 +4,29 @@
     enable = true;
 
     profiles.ebbe = {
-        extensions.packages = with inputs.firefox-addons.packages."x86_64-linux"; [
-            darkreader
-            facebook-container
-            i-dont-care-about-cookies
-            proton-pass
-            to-google-translate
-            view-image
-            ublock-origin
-            youtube-shorts-block
-        ];
+      extensions.packages = with inputs.firefox-addons.packages."x86_64-linux"; [
+        darkreader
+        facebook-container
+        i-dont-care-about-cookies
+        proton-pass
+        to-google-translate
+        view-image
+        ublock-origin
+        youtube-shorts-block
+      ];
 
-        settings = {
-          # Enable dark mode preferences
-          "ui.systemUsesDarkTheme" = 1;
-          "layout.css.prefers-color-scheme.content-override" = 0;
-          
-          # Use system theme for Firefox interface
-          "extensions.activeThemeID" = "default-theme@mozilla.org";
-          "browser.theme.dark-private-windows" = true;
-          
-          # Dark scrollbars
-          "widget.content.gtk-theme-override" = "Adwaita:dark";
-        };
+      settings = {
+        # Enable dark mode preferences
+        "ui.systemUsesDarkTheme" = 1;
+        "layout.css.prefers-color-scheme.content-override" = 0;
+
+        # Use system theme for Firefox interface
+        "extensions.activeThemeID" = "default-theme@mozilla.org";
+        "browser.theme.dark-private-windows" = true;
+
+        # Dark scrollbars
+        "widget.content.gtk-theme-override" = "Adwaita:dark";
+      };
     };
   };
 
@@ -46,7 +46,7 @@
       wlrobs
       obs-backgroundremoval
       obs-pipewire-audio-capture
-      obs-vaapi #optional AMD hardware acceleration
+      obs-vaapi # optional AMD hardware acceleration
       obs-gstreamer
       obs-vkcapture
     ];
