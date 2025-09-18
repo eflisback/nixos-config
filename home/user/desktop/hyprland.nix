@@ -64,9 +64,7 @@
         "$mainMod, L, exec, swaylock"
 
         # Screenshot bindings
-        ", PRINT, exec, hyprshot -m region --clipboard-only"
-        "SHIFT, PRINT, exec, hyprshot -m window --clipboard-only"
-        "CTRL, PRINT, exec, hyprshot -m output --clipboard-only"
+        "$mainMod SHIFT, S, exec, hyprshot -m output --clipboard-only"
 
         # Focus with Super+arrow keys (like i3)
         "$mainMod, Left, movefocus, l"

@@ -6,6 +6,7 @@
   home.packages = with pkgs; [
     # Scala & Java
     scala
+    scala-cli
     sbt
     openjdk
 
