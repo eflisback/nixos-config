@@ -7,7 +7,7 @@ effect-blur=11x11
 font=JetBrains Mono
 indicator-radius=80
 indicator-thickness=8
-timestr=%I:%M %p
+timestr=%H:%M
 datestr=%F
 
 inside-color=#181926
