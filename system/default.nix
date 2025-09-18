@@ -8,7 +8,6 @@
     ./fonts.nix
     ./gaming.nix
     ./hardware.nix
-    ./hyprland.nix
     ./internationalisation.nix
     ./networking.nix
     ./nixsettings.nix

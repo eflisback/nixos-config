@@ -25,4 +25,19 @@
       "1, monitor:DP-3, default:true"
     ];
   };
+
+  # Desktop-specific hyprpaper configuration
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      preload = [
+        "~/.config/wallpapers/wall.png"
+      ];
+      wallpaper = [
+        "DP-3,~/.config/wallpapers/wall.png"
+        "HDMI-A-1,~/.config/wallpapers/wall.png"
+      ];
+      splash = false;
+    };
+  };
 }
