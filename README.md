@@ -6,29 +6,29 @@ A modular NixOS configuration using Flakes and Home-Manager with support for mul
 
 ```
 nixos-config/
-├── flake.nix                    # Main flake definition
-├── hosts/                      # Host-specific configurations
-│   └── nucleus/                # Desktop configuration
-│       ├── default.nix         # System config for nucleus
-│       ├── hardware-configuration.nix
-│       └── home.nix            # Home-Manager config for nucleus
-├── system/                     # Shared system configuration
-│   ├── default.nix             # Common system settings
-│   ├── boot.nix                # Bootloader configuration
-│   ├── networking.nix          # Network settings
-│   ├── packages.nix            # System packages
-│   ├── hardware.nix            # Shared hardware settings
-│   └── ...                     # Other system modules
-└── home/                       # Shared user configuration
-    ├── common.nix              # Common home settings
-    ├── user/                   # Home-Manager modules
-    │   ├── packages.nix        # User packages
-    │   ├── programs.nix        # Application configs
-    │   ├── desktop/            # Desktop environment configs
-    │   │   ├── hyprland.nix    # Hyprland configuration
-    │   │   └── hyprpaper.nix   # Wallpaper configuration
-    │   └── ...                 # Other user modules
-    └── config/                 # Traditional dotfiles
+├── flake.nix                           # Main flake definition
+├── hosts/                              # Host-specific configurations
+│   └── nucleus/                        # Desktop configuration
+│       ├── default.nix                 # System config for nucleus
+│       ├── hardware-configuration.nix  # Generated hardware config for nucleus
+│       └── home.nix                    # Home-Manager config for nucleus
+├── system/                             # Shared system configuration
+│   ├── default.nix                     # Common system settings
+│   ├── boot.nix                        # Bootloader configuration
+│   ├── networking.nix                  # Network settings
+│   ├── packages.nix                    # System packages
+│   ├── hardware.nix                    # Shared hardware settings
+│   └── ...                             # Other system modules
+└── home/                               # Shared user configuration
+    ├── common.nix                      # Common home settings
+    ├── user/                           # Home-Manager modules
+    │   ├── packages.nix                # User packages
+    │   ├── programs.nix                # Application configs
+    │   ├── desktop/                    # Desktop environment configs
+    │   │   ├── hyprland.nix            # Hyprland configuration
+    │   │   └── hyprpaper.nix           # Wallpaper configuration
+    │   └── ...                         # Other user modules
+    └── config/                         # Traditional dotfiles
 ```
 
 ## Usage

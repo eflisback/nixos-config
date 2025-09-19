@@ -1,11 +1,12 @@
-let
-  userName = "Ebbe Flisbäck";
-  email = "ebbe.flisback@gmail.com";
-in
 {
   programs.git = {
     enable = true;
-    userName = userName;
-    userEmail = email;
+    userName = "Ebbe Flisbäck";
+    userEmail = "ebbe.flisback@gmail.com";
+
+    extraConfig = {
+      init.defaultBranch = "main";
+      push.autoSetupRemote = true;
+    };
   };
 }
