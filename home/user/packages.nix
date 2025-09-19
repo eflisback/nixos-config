@@ -38,6 +38,7 @@
       ];
     })
 
+    texlive.combined.scheme-basic
     woeusb
     hyprshot
     catppuccin-cursors.macchiatoBlue
