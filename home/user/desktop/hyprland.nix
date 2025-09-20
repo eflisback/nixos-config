@@ -33,12 +33,6 @@
         "waybar & hyprpaper"
         "swayidle -w"
         "nwg-look -a"
-        # Removed auto-starting applications - launch manually when needed
-        # "[workspace 2 silent] firefox"
-        # "[workspace 10 silent] telegram-desktop"
-        # "[workspace 10 silent] vesktop"
-        # "[workspace 3 silent] thunderbird"
-        # "[workspace 5 silent] steam"
       ];
 
       # Variables
@@ -129,12 +123,6 @@
         "$mainMod SHIFT, j, resizeactive, 0 30"
       ];
 
-      # Media keys moved to laptop-specific config (desktop uses external controls)
-
-      bindl = [
-        # Audio mute keys also moved to laptop config
-      ];
-
       # Mouse bindings
       bindm = [
         "$mainMod, mouse:272, movewindow"
@@ -161,6 +149,8 @@
         "col.inactive_border" = "rgb(24273A) rgb(24273A) rgb(24273A) rgb(24273A) 45deg";
         layout = "dwindle";
         allow_tearing = false;
+        resize_on_border = true;
+        extend_border_grab_area = 15;
       };
 
       # Decoration settings
@@ -208,11 +198,6 @@
       master = {
         new_status = "master";
       };
-
-      # Gesture settings (removed - workspace_swipe option doesn't exist)
-      # gestures = {
-      #   workspace_swipe = false;
-      # };
 
       # Misc settings
       misc = {
