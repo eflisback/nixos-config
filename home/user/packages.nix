@@ -10,6 +10,9 @@
     sbt
     openjdk
 
+    # Python
+    python3
+
     # NodeJS
     nodejs
     nodePackages.pnpm

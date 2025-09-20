@@ -33,6 +33,13 @@
       ", XF86AudioMute, exec, pamixer -t"
       ", XF86AudioMicMute, exec, pamixer --default-source -t"
     ];
+
+    # Laptop touchpad natural scroll
+    input = {
+      touchpad = {
+        natural_scroll = true;
+      };
+    };
   };
 
   # Laptop-specific hyprpaper configuration
