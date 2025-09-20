@@ -41,6 +41,7 @@
       ];
     })
 
+    spotify
     texlive.combined.scheme-basic
     woeusb
     hyprshot
