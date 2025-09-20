@@ -23,6 +23,8 @@
     wget
     zip
     zoxide
+    cowsay
+    sl
 
     # Qt5 dependencies for desktop environment
     libsForQt5.qt5.qtquickcontrols2
