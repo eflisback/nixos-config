@@ -76,11 +76,6 @@
         "$mainMod SHIFT, Left, movewindow, mon:l"
         "$mainMod SHIFT, Right, movewindow, mon:r"
 
-        # Move windows with Super+hjkl
-        "$mainMod, h, movewindow, l"
-        "$mainMod, l, movewindow, r"
-        "$mainMod, k, movewindow, u"
-        "$mainMod, j, movewindow, d"
 
         # Workspace switching
         "$mainMod, 1, workspace, 1"
