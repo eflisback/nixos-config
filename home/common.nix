@@ -3,7 +3,7 @@
 {
   imports = [
     ./user
-    inputs.nixvim.homeManagerModules.nixvim
+    inputs.nixvim.homeModules.nixvim
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
