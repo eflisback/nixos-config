@@ -5,7 +5,6 @@ in
   # Symlink traditional dotfiles from the config directory.
   # This bridges the gap between NixOS modules and legacy config files.
   home.file = {
-    ".config/nvim".source = "${configDir}/nvim";
     ".config/wallpapers".source = "${configDir}/wallpapers";
     ".config/kitty".source = "${configDir}/kitty";
     ".config/swayidle".source = "${configDir}/swayidle";
