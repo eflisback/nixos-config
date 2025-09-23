@@ -19,6 +19,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.4.2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   # Outputs define what this flake provides - the actual system configurations.
@@ -29,6 +34,7 @@
       nixpkgs-unstable,
       home-manager,
       nixvim,
+      lanzaboote,
       ...
     }@inputs:
     let
@@ -45,6 +51,7 @@
           inherit system;
           modules = [
             ./hosts/nucleus
+            lanzaboote.nixosModules.lanzaboote
             home-manager.nixosModules.home-manager
             {
               home-manager.users.ebbe = import ./hosts/nucleus/home.nix;
@@ -64,6 +71,7 @@
           inherit system;
           modules = [
             ./hosts/orbit
+            lanzaboote.nixosModules.lanzaboote
             home-manager.nixosModules.home-manager
             {
               home-manager.users.ebbe = import ./hosts/orbit/home.nix;

@@ -23,6 +23,7 @@
     wget
     zip
     zoxide
+    sbctl
     cowsay
     sl
 
