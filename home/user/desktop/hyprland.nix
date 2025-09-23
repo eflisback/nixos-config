@@ -14,6 +14,7 @@
     wl-clipboard
     wofi
     waybar
+    hyprshot
   ];
 
   wayland.windowManager.hyprland = {

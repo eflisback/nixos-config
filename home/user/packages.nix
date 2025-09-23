@@ -27,6 +27,7 @@
 
     # Social
     vesktop
+    signal-desktop
 
     # Nix
     nixfmt-rfc-style
@@ -44,7 +45,6 @@
     spotify
     texlive.combined.scheme-basic
     woeusb
-    hyprshot
     catppuccin-cursors.macchiatoBlue
     catppuccin-gtk
     papirus-folders
