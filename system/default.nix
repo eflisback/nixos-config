@@ -9,6 +9,7 @@
     ./gaming.nix
     ./hardware.nix
     ./internationalisation.nix
+    ./lanzaboote.nix
     ./networking.nix
     ./nixsettings.nix
     ./packages.nix
