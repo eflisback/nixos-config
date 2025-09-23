@@ -17,10 +17,11 @@
     nodejs
     nodePackages.pnpm
 
-    # Misc
+    # IDE & GameDev
     vscodium
     claude-code
     godot-mono
+    blender
 
     # Bluetooth
     bluetui
