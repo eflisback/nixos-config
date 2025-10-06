@@ -28,6 +28,7 @@
 
     # Social
     vesktop
+    discord
     signal-desktop
 
     # Nix
@@ -43,6 +44,8 @@
       ];
     })
 
+    gammastep
+    vlc
     spotify
     texlive.combined.scheme-basic
     woeusb

@@ -61,6 +61,9 @@
         # Screenshot bindings
         "$mainMod SHIFT, S, exec, hyprshot -m output --clipboard-only"
 
+        # Clip it!
+        "SHIFT, F8, pass, class:^(com\.obsproject\.Studio)$"
+
         # Focus with Super+arrow keys (like i3)
         "$mainMod, Left, movefocus, l"
         "$mainMod, Right, movefocus, r"
@@ -76,7 +79,6 @@
         # Move windows between monitors with Super+Shift+left/right
         "$mainMod SHIFT, Left, movewindow, mon:l"
         "$mainMod SHIFT, Right, movewindow, mon:r"
-
 
         # Workspace switching
         "$mainMod, 1, workspace, 1"
