@@ -43,6 +43,8 @@
       ];
     })
 
+    gammastep
+    vlc
     spotify
     texlive.combined.scheme-basic
     woeusb
