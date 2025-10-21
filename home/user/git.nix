@@ -1,10 +1,10 @@
 {
   programs.git = {
     enable = true;
-    userName = "Ebbe Flisbäck";
-    userEmail = "ebbe.flisback@gmail.com";
 
-    extraConfig = {
+    settings = {
+      user.name = "Ebbe Flisbäck";
+      user.email = "ebbe.flisback@gmail.com";
       init.defaultBranch = "main";
       push.autoSetupRemote = true;
     };
