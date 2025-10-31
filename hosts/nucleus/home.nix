@@ -14,8 +14,9 @@
     # Desktop dual monitor setup
     monitor = [
       # 144Hz ASUS monitor on left (primary), 60Hz Samsung on right
-      "DP-3,1920x1080@144,0x0,1.0"
-      "HDMI-A-1,1920x1080@60,1920x0,1.0"
+      # Note: If screen sharing quality issues persist, try adding/removing ,bitdepth,10
+      "DP-3,1920x1080@144,0x0,1.0,bitdepth,10"
+      "HDMI-A-1,1920x1080@60,1920x0,1.0,bitdepth,10"
     ];
 
     # Workspace assignment for dual monitor

@@ -34,6 +34,9 @@
     # Nix
     nixfmt-rfc-style
 
+    # Studies
+    anki-bin
+
     # Gaming
     pkgs.steam
     pkgs.steam-run
