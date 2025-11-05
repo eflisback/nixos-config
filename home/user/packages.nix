@@ -37,6 +37,9 @@
     # Studies
     anki-bin
 
+    # Piano
+    pianobooster
+
     # Gaming
     pkgs.steam
     pkgs.steam-run
