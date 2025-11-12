@@ -8,6 +8,7 @@
     # Groups provide permissions for system resources and services.
     extraGroups = [
       "wheel" # sudo access
+      "audio" # audio and MIDI device access
       "qemu"
       "kvm"
       "libvirtd" # virtualization

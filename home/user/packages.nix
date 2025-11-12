@@ -17,6 +17,16 @@
     nodejs
     nodePackages.pnpm
 
+    # Rust
+    cargo
+    rustc
+    wasm-pack
+    rustfmt
+    lld
+
+    # C
+    gcc
+
     # IDE & GameDev
     vscodium
     claude-code
@@ -36,6 +46,8 @@
 
     # Studies
     anki-bin
+    mpv
+    ffmpeg
 
     # Piano
     pianobooster
