@@ -62,6 +62,7 @@
       ];
     })
 
+    gimp
     gammastep
     vlc
     spotify
