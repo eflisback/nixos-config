@@ -34,7 +34,7 @@
     blender
 
     # Bluetooth
-    bluetui
+    overskride
 
     # Social
     vesktop
