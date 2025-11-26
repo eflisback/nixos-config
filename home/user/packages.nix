@@ -17,12 +17,8 @@
     nodejs
     nodePackages.pnpm
 
-    # Rust
-    cargo
-    rustc
-    wasm-pack
-    rustfmt
-    lld
+    # PHP
+    php
 
     # C
     gcc
