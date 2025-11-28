@@ -27,6 +27,7 @@
     vscodium
     claude-code
     godot-mono
+    dotnet-sdk
     blender
 
     # Bluetooth
