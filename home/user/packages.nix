@@ -58,7 +58,9 @@
         pkgs.winetricks
       ];
     })
+    heroic
 
+    # Misc
     gimp
     gammastep
     vlc
@@ -68,7 +70,7 @@
     catppuccin-cursors.macchiatoBlue
     catppuccin-gtk
     papirus-folders
-    pamixer # Volume control
-    brightnessctl # Brightness control
+    pamixer
+    brightnessctl
   ];
 }
