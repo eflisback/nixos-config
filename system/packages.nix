@@ -27,11 +27,6 @@
     cowsay
     sl
 
-    # Qt5 dependencies for desktop environment
-    libsForQt5.qt5.qtquickcontrols2
-    libsForQt5.qt5.qtgraphicaleffects
-    libsForQt5.qt5.qtsvg
-
     # File manager and desktop portals
     xfce.thunar
     xdg-desktop-portal-gtk

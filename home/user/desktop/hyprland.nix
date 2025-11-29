@@ -31,7 +31,7 @@
         "dbus-update-activation-environment --systemd --all"
         "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
-        "waybar & hyprpaper"
+        "waybar"
         "swayidle -w"
         "nwg-look -a"
       ];
