@@ -17,11 +17,14 @@
     nodejs
     nodePackages.pnpm
 
-    # PHP
-    php
-
     # C
     gcc
+
+    # PHP
+    php
+    phpPackages.composer
+    phpPackages.php-codesniffer
+    mariadb
 
     # IDE & GameDev
     vscodium
