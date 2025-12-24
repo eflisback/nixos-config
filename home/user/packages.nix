@@ -26,6 +26,7 @@
     godot-mono
     dotnet-sdk
     blender
+    audacity
 
     # Bluetooth
     overskride
