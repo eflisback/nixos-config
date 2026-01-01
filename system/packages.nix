@@ -29,7 +29,7 @@
     sl
 
     # File manager and desktop portals
-    xfce.thunar
+    thunar
     xdg-desktop-portal-gtk
     xdg-desktop-portal-wlr
   ];
