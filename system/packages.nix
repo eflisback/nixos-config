@@ -24,6 +24,7 @@
     zip
     zoxide
     sbctl
+    tree
     cowsay
     sl
 
