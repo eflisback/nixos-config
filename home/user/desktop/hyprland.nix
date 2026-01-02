@@ -199,14 +199,14 @@
       };
 
       # Window rules
-      windowrule = [
-        "float, title:Open File"
-        "float, title:branchdialog"
-        "float, title:wlogout"
-        "fullscreen, title:wlogout"
-      ];
-
       windowrulev2 = [
+        # Dialog windows
+        "float, title:^(Open File)$"
+        "float, title:^(branchdialog)$"
+        "float, title:^(wlogout)$"
+        "fullscreen, title:^(wlogout)$"
+
+
         # Floating windows
         "float, class:(file_progress)"
         "float, class:(confirm)"
