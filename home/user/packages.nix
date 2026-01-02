@@ -31,6 +31,9 @@
     # Bluetooth
     overskride
 
+    # Browsers
+    chromium
+
     # Social
     vesktop
     discord
