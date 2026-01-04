@@ -35,7 +35,6 @@
     chromium
 
     # Social
-    vesktop
     discord
     signal-desktop
 
