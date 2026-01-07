@@ -17,6 +17,9 @@
     nodejs
     nodePackages.pnpm
 
+    # Rust
+    rustup
+
     # C
     gcc
 
