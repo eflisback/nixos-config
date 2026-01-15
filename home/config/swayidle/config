@@ -1,2 +1,2 @@
-timeout 300 'swaylock'
+timeout 1800 'swaylock'
 before-sleep 'swaylock'

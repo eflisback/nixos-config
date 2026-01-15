@@ -221,7 +221,15 @@
         "float, class:(org.pulseaudio.pavucontrol)"
         "float, class:(file-roller)"
         "fullscreen, class:(wlogout)"
+
+        # Prevent idle lock during media playback and games
         "idleinhibit focus, class:(mpv)"
+        "idleinhibit fullscreen, class:(firefox)"
+        "idleinhibit fullscreen, class:(chromium)"
+        "idleinhibit fullscreen, class:(google-chrome)"
+        "idleinhibit focus, class:(steam_app.*)"
+        "idleinhibit focus, class:(.*.exe)"
+
         "float, title:^(Media viewer)$"
 
         # Picture in picture windows
