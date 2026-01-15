@@ -11,6 +11,7 @@
     fzf
     git
     gnumake
+    just
     lm_sensors
     fastfetch
     neovim

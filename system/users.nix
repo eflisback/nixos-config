@@ -9,6 +9,7 @@
     extraGroups = [
       "wheel" # sudo access
       "audio" # audio and MIDI device access
+      "docker" # docker access without sudo
       "qemu"
       "kvm"
       "libvirtd" # virtualization
