@@ -42,7 +42,7 @@
     signal-desktop
 
     # Nix
-    nixfmt-rfc-style
+    nixfmt
 
     # Studies
     anki-bin
