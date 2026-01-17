@@ -12,6 +12,7 @@
 
     # Python
     python3
+    uv
 
     # NodeJS
     nodejs
