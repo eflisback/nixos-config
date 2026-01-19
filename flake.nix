@@ -8,22 +8,6 @@
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
   };
 
   # Outputs define what this flake provides - the actual system configurations.
@@ -33,8 +17,6 @@
       nixpkgs,
       nixpkgs-unstable,
       home-manager,
-      nixvim,
-      lanzaboote,
       ...
     }@inputs:
     let
@@ -51,7 +33,6 @@
           inherit system;
           modules = [
             ./hosts/nucleus
-            lanzaboote.nixosModules.lanzaboote
             home-manager.nixosModules.home-manager
             {
               home-manager.users.ebbe = import ./hosts/nucleus/home.nix;
@@ -71,7 +52,6 @@
           inherit system;
           modules = [
             ./hosts/orbit
-            lanzaboote.nixosModules.lanzaboote
             home-manager.nixosModules.home-manager
             {
               home-manager.users.ebbe = import ./hosts/orbit/home.nix;

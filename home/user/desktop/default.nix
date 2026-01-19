@@ -2,6 +2,6 @@
 {
   # Desktop environment configuration modules.
   imports = [
-    ./hyprland.nix
+    ./plasma.nix
   ];
 }

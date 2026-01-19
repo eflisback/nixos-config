@@ -11,7 +11,6 @@
     ./environment.nix
     ./desktop
     ./xdg.nix
-    ./nvim.nix
   ];
 
   # Allow proprietary packages - NixOS defaults to only free/open source software.

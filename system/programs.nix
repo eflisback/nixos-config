@@ -4,18 +4,9 @@
 
   xdg.portal = {
     enable = true;
-    wlr.enable = false;
-    xdgOpenUsePortal = false;
-    config = {
-      common = {
-        default = "*";
-      };
-      hyprland = {
-        default = [ "hyprland" "gtk" ];
-      };
-    };
+    xdgOpenUsePortal = true;
     extraPortals = [
-      pkgs.xdg-desktop-portal-hyprland
+      pkgs.kdePackages.xdg-desktop-portal-kde
       pkgs.xdg-desktop-portal-gtk
     ];
   };
@@ -25,16 +16,6 @@
       enable = true;
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
-    };
-
-    hyprland = {
-      enable = true;
-
-      xwayland = {
-        enable = true;
-      };
-
-      portalPackage = pkgs.xdg-desktop-portal-hyprland;
     };
 
     gnupg = {

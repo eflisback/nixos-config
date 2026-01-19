@@ -7,22 +7,14 @@
     # Scala & Java
     scala
     scala-cli
-    sbt
     jdk25
 
     # Python
     python3
-    uv
 
     # NodeJS
     nodejs
     nodePackages.pnpm
-
-    # Rust
-    rustup
-
-    # C
-    gcc
 
     # IDE & GameDev
     vscodium
@@ -31,12 +23,6 @@
     dotnet-sdk
     blender
     audacity
-
-    # Bluetooth
-    overskride
-
-    # Browsers
-    chromium
 
     # Social
     discord
@@ -49,9 +35,6 @@
     anki-bin
     mpv
     ffmpeg
-
-    # Piano
-    pianobooster
 
     # Gaming
     pkgs.steam
@@ -67,7 +50,6 @@
 
     # Misc
     gimp
-    gammastep
     vlc
     spotify
     texlive.combined.scheme-basic
@@ -76,6 +58,5 @@
     catppuccin-gtk
     papirus-folders
     pamixer
-    brightnessctl
   ];
 }

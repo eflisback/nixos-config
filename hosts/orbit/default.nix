@@ -12,6 +12,10 @@
   # Laptop-specific settings
   # Enable power management
   powerManagement.enable = true;
+
+  # Disable power-profiles-daemon (conflicts with TLP)
+  services.power-profiles-daemon.enable = false;
+
   services.tlp = {
     enable = true;
     settings = {
