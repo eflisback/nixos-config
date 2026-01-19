@@ -8,7 +8,7 @@
     scala
     scala-cli
     sbt
-    openjdk
+    jdk25
 
     # Python
     python3
