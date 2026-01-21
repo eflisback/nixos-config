@@ -14,6 +14,9 @@
     python3
     uv
 
+    # Android
+    android-studio
+
     # NodeJS
     nodejs
     nodePackages.pnpm
