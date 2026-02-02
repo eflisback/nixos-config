@@ -17,6 +17,10 @@
     # Android
     android-studio
 
+    # Arduino
+    arduino-ide
+    openocd
+
     # NodeJS
     nodejs
     nodePackages.pnpm
