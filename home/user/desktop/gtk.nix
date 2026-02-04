@@ -1,13 +1,13 @@
 { pkgs, ... }:
 let
-  orchisTheme = pkgs.orchis-theme.override {
-    tweaks = [ "solid" ];
-  };
+  orchisTheme = pkgs.orchis-theme;
 
   wallpaper = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/vinceliuice/Orchis-theme/master/wallpaper/4k.jpg";
     sha256 = "0w85g0rymcc97h9znhsxmvpnq7f0iw9c21k2sxqd6rwklkv9fmph";
   };
+
+  orchisName = "Orchis-Green-Dark";
 in
 {
   home.packages = with pkgs; [
@@ -26,7 +26,7 @@ in
     };
 
     theme = {
-      name = "Orchis-Green-Dark-Compact";
+      name = orchisName;
       package = orchisTheme;
     };
 
@@ -42,13 +42,12 @@ in
     gtk4.extraConfig = {
       gtk-application-prefer-dark-theme = 1;
     };
-
   };
 
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
-      gtk-theme = "Orchis-Green-Dark-Compact";
+      gtk-theme = orchisName;
       icon-theme = "Papirus-Dark";
       cursor-theme = "Catppuccin-Macchiato-Blue";
       toolbar-icons-size = "small";
@@ -62,7 +61,7 @@ in
     };
 
     "org/gnome/shell/extensions/user-theme" = {
-      name = "Orchis-Green-Dark-Compact";
+      name = orchisName;
     };
 
     "org/gnome/desktop/background" = {
@@ -76,8 +75,20 @@ in
       picture-options = "zoom";
     };
 
-    "org/gnome/mutter" = {
-      workspaces-only-on-primary = false;
+    "org/gnome/shell/extensions/blur-my-shell" = {
+      blur = true;
+    };
+
+    "org/gnome/shell/extensions/blur-my-shell/panel" = {
+      blur = false;
+    };
+
+    "org/gnome/shell/extensions/blur-my-shell/overview" = {
+      blur = true;
+    };
+
+    "org/gnome/shell/extensions/blur-my-shell/applications" = {
+      blur = true;
     };
   };
 
