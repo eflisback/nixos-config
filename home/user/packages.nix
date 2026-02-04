@@ -20,7 +20,6 @@
     nodePackages.pnpm
 
     # IDE & GameDev
-    vscodium
     claude-code
     # godot-mono
     # dotnet-sdk

@@ -32,7 +32,7 @@ in
 
     iconTheme = {
       name = "Papirus-Dark";
-      package = pkgs.papirus-folders;
+      package = pkgs.papirus-icon-theme;
     };
 
     gtk3.extraConfig = {
