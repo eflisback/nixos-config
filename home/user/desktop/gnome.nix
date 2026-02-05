@@ -20,6 +20,11 @@
   dconf.settings = {
     "org/gnome/desktop/wm/keybindings" = {
       close = [ "<Super>q" ];
+      toggle-maximized = [ "<Super>f" ];
+    };
+
+    "org/gnome/shell/keybindings" = {
+      show-screenshot-ui = [ "<Super><Shift>s" ];
     };
 
     "org/gnome/settings-daemon/plugins/media-keys" = {
