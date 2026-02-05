@@ -15,6 +15,7 @@ in
     gnome-themes-extra
     gnomeExtensions.user-themes
     gnomeExtensions.blur-my-shell
+    gnomeExtensions.appindicator
   ];
 
   gtk = {
@@ -57,6 +58,7 @@ in
       enabled-extensions = [
         "user-theme@gnome-shell-extensions.gcampax.github.com"
         "blur-my-shell@aunetx"
+        "appindicatorsupport@rgcjonas.gmail.com"
       ];
     };
 
