@@ -6,6 +6,7 @@
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nix-ros-overlay.url = "github:lopsided98/nix-ros-overlay/master";
   };
 
   outputs =
@@ -14,6 +15,7 @@
       nixpkgs,
       nixpkgs-unstable,
       home-manager,
+      nix-ros-overlay,
       ...
     }@inputs:
     let
@@ -21,6 +23,10 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
+      pkgs-ros = import nix-ros-overlay.inputs.nixpkgs {
+        inherit system;
+        overlays = [ nix-ros-overlay.overlays.default ];
+      };
     in
     {
       nixosConfigurations = {
@@ -34,7 +40,7 @@
               home-manager.users.ebbe = import ./hosts/nucleus/home.nix;
               home-manager.backupFileExtension = "backup";
               home-manager.extraSpecialArgs = {
-                inherit pkgs-unstable inputs;
+                inherit pkgs-unstable pkgs-ros inputs;
               };
             }
           ];
@@ -53,7 +59,7 @@
               home-manager.users.ebbe = import ./hosts/orbit/home.nix;
               home-manager.backupFileExtension = "backup";
               home-manager.extraSpecialArgs = {
-                inherit pkgs-unstable inputs;
+                inherit pkgs-unstable pkgs-ros inputs;
               };
             }
           ];

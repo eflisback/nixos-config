@@ -8,8 +8,7 @@
     sbt
     jdk25
 
-    # Python
-    python3
+    # Python (provided by ROS environment)
     # uv
 
     # Android

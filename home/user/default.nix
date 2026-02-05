@@ -8,6 +8,7 @@
     ./environment.nix
     ./desktop
     ./xdg.nix
+    ./ros.nix
   ];
 
   # Allow proprietary packages - NixOS defaults to only free/open source software.
