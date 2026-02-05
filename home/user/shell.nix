@@ -9,7 +9,7 @@
 
     shellAliases = {
       update = "cd ~/nixos-config && sudo nix flake update";
-      config = "codium ~/nixos-config";
+      config = "codium ~/nixos-config 2>/dev/null";
       sdn = "shutdown -h now";
       rbt = "reboot";
 
