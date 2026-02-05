@@ -21,10 +21,10 @@
 
     # IDE & GameDev
     claude-code
-    # godot-mono
-    # dotnet-sdk
-    # blender
-    # audacity
+    godot-mono
+    dotnet-sdk
+    blender
+    audacity
 
     # Social
     discord
@@ -35,20 +35,19 @@
 
     # Studies
     anki-bin
-    # mpv
-    # ffmpeg
+    mpv
+    ffmpeg
 
     # Gaming
     steam
     steam-run
     # heroic
-    # prismlauncher
+    prismlauncher
 
     # Misc
     gimp
     spotify
-    # vlc
-    # texlive.combined.scheme-basic
-    # woeusb
+    vlc
+    woeusb
   ];
 }
