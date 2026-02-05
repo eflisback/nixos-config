@@ -7,7 +7,7 @@ let
     sha256 = "0w85g0rymcc97h9znhsxmvpnq7f0iw9c21k2sxqd6rwklkv9fmph";
   };
 
-  orchisName = "Orchis-Green-Dark";
+  orchisName = "Orchis-Purple-Dark";
 in
 {
   home.packages = with pkgs; [
@@ -16,6 +16,7 @@ in
     gnomeExtensions.user-themes
     gnomeExtensions.blur-my-shell
     gnomeExtensions.appindicator
+    gnomeExtensions.simpleweather
   ];
 
   gtk = {
@@ -59,6 +60,7 @@ in
         "user-theme@gnome-shell-extensions.gcampax.github.com"
         "blur-my-shell@aunetx"
         "appindicatorsupport@rgcjonas.gmail.com"
+        "simple-weather@romanlefler.com"
       ];
     };
 
