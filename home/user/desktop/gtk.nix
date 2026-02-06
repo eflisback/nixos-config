@@ -17,6 +17,7 @@ in
     gnomeExtensions.blur-my-shell
     gnomeExtensions.appindicator
     gnomeExtensions.simpleweather
+    gnomeExtensions.forge
   ];
 
   gtk = {
@@ -61,6 +62,7 @@ in
         "blur-my-shell@aunetx"
         "appindicatorsupport@rgcjonas.gmail.com"
         "simple-weather@romanlefler.com"
+        "forge@jmmaranan.com"
       ];
     };
 
@@ -93,6 +95,10 @@ in
 
     "org/gnome/shell/extensions/blur-my-shell/applications" = {
       blur = true;
+    };
+
+    "org/gnome/shell/extensions/forge/keybindings" = {
+      window-toggle-float = [ "<Super><Shift>a" ];
     };
   };
 
