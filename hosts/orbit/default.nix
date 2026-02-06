@@ -6,12 +6,12 @@
     ../../system
   ];
 
-  networking.hostName = "laptop";
+  networking.hostName = "orbit";
 
   hardware = {
     nvidia = {
       modesetting.enable = true;
-      powerManagement.enable = false;
+      powerManagement.enable = true;
       open = false;
       nvidiaSettings = true;
       package = config.boot.kernelPackages.nvidiaPackages.stable;

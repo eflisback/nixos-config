@@ -24,14 +24,14 @@
     in
     {
       nixosConfigurations = {
-        laptop = lib.nixosSystem {
+        nucleus = lib.nixosSystem {
           inherit system;
           modules = [
-            ./hosts/laptop
+            ./hosts/nucleus
             home-manager.nixosModules.home-manager
             {
               # SETUP - ersätt 'ebbe' med 'olle'
-              home-manager.users.ebbe = import ./hosts/laptop/home.nix;
+              home-manager.users.ebbe = import ./hosts/nucleus/home.nix;
               home-manager.backupFileExtension = "backup";
               home-manager.extraSpecialArgs = {
                 inherit pkgs-unstable inputs;
