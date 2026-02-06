@@ -7,7 +7,11 @@
       paths = with pkgs-ros.rosPackages.jazzy; [
         ros-base
         turtlesim
-        # rqt
+        rqt
+        rviz2
+        teleop-twist-keyboard
+        teleop-twist-joy
+        joy
       ];
     })
   ];
