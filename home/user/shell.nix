@@ -23,6 +23,10 @@
 
     initContent = ''
       eval "$(zoxide init zsh)"
+
+      rebuild() {
+        sudo nixos-rebuild "$1" --flake "$2"
+      }
     '';
 
     oh-my-zsh = {
