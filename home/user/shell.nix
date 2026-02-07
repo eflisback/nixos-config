@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  # Zsh configuration
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -39,7 +38,6 @@
     };
   };
 
-  # Shell tools
   home.packages = with pkgs; [
     zoxide
     eza

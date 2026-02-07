@@ -8,26 +8,12 @@
     hyprshot
   ];
 
-  services.hyprpaper = {
-    enable = true;
-    settings = {
-      splash = false;
-      preload = [ "${wallpaper}" ];
-      wallpaper = [
-        {
-          monitor = "";
-          path = "${wallpaper}";
-          fit_mode = "cover";
-        }
-      ];
-    };
-  };
-
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
       exec-once = [
         "systemctl --user start hyprpolkitagent"
+        "ashell"
       ];
 
       general = {
@@ -98,12 +84,103 @@
         "$mod SHIFT, right, movewindow, r"
         "$mod SHIFT, up, movewindow, u"
         "$mod SHIFT, down, movewindow, d"
+      ]
+      ++ (builtins.concatLists (
+        builtins.genList (
+          i:
+          let
+            ws = toString (i + 1);
+          in
+          [
+            "$mod, ${ws}, workspace, ${ws}"
+            "$mod SHIFT, ${ws}, movetoworkspace, ${ws}"
+          ]
+        ) 9
+      ));
+
+      bindm = [
+        "$mod, mouse:272, movewindow"
       ];
 
       misc = {
         disable_hyprland_logo = true;
         vrr = 1;
       };
+    };
+  };
+
+  programs.ashell = {
+    enable = true;
+    settings = {
+      log_level = "warn";
+      position = "Top";
+      app_launcher_cmd = "hyprlauncher";
+
+      modules = {
+        left = [
+          [
+            "Workspaces"
+          ]
+        ];
+        center = [ "WindowTitle" ];
+        right = [
+          "Tray"
+          "Clock"
+          "Settings"
+        ];
+      };
+
+      workspaces = {
+        enable_workspace_filling = false;
+        visibility_mode = "MonitorSpecific";
+      };
+
+      window_title = {
+        truncate_title_after_length = 100;
+      };
+
+      appearance = {
+        style = "Solid";
+        font_family = "JetBrainsMono Nerd Font";
+
+        primary_color = "#f77adc";
+        success_color = "#9ece6a";
+        text_color = "#a9b1d6";
+        workspace_colors = [
+          "#f77adc"
+          "#f77adc"
+        ];
+
+        danger_color = {
+          base = "#f7768e";
+          weak = "#e0af68";
+        };
+
+        background_color = {
+          base = "#1a1b26";
+          weak = "#24283b";
+          strong = "#414868";
+        };
+
+        secondary_color = {
+          base = "#0c0d14";
+        };
+      };
+    };
+  };
+
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      splash = false;
+      preload = [ "${wallpaper}" ];
+      wallpaper = [
+        {
+          monitor = "";
+          path = "${wallpaper}";
+          fit_mode = "cover";
+        }
+      ];
     };
   };
 }
