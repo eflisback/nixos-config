@@ -1,8 +1,9 @@
 { pkgs, ... }:
+
 {
   imports = [
+    ./theme.nix
     ./gnome.nix
-    ./gtk.nix
-    ./alacritty.nix
+    ./hyprland.nix
   ];
 }

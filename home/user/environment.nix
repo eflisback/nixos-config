@@ -2,7 +2,7 @@
   home.sessionVariables = {
     BROWSER = "firefox";
     EDITOR = "codium";
-    TERMINAL = "alacritty";
+    TERMINAL = "kitty";
     XCURSOR_SIZE = "24";
 
     NIXOS_OZONE_WL = "1";

@@ -1,17 +1,20 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  lib,
+  wallpaper,
+  ...
+}:
+
 let
-  orchisTheme = pkgs.orchis-theme;
-
-  wallpaper = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/vinceliuice/Orchis-theme/master/wallpaper/4k.jpg";
-    sha256 = "0w85g0rymcc97h9znhsxmvpnq7f0iw9c21k2sxqd6rwklkv9fmph";
-  };
-
   orchisName = "Orchis-Purple-Dark";
 in
 {
   home.packages = with pkgs; [
-    gtk-engine-murrine
+    nautilus
+    gnome-usage
+    gnome-notes
+    gnome-calculator
+    gnome-disk-utility
     gnome-themes-extra
     gnomeExtensions.user-themes
     gnomeExtensions.blur-my-shell
@@ -19,39 +22,40 @@ in
     gnomeExtensions.simpleweather
   ];
 
-  gtk = {
-    enable = true;
-
-    cursorTheme = {
-      name = "Catppuccin-Macchiato-Blue";
-      package = pkgs.catppuccin-cursors.macchiatoBlue;
-    };
-
-    theme = {
-      name = orchisName;
-      package = orchisTheme;
-    };
-
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
-    };
-
-    gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
-    };
-
-    gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
-    };
-  };
-
   dconf.settings = {
+    "org/gnome/desktop/wm/keybindings" = {
+      close = [ "<Super>q" ];
+      toggle-maximized = [ "<Super>f" ];
+    };
+
+    "org/gnome/shell/keybindings" = {
+      show-screenshot-ui = [ "<Super><Shift>s" ];
+    };
+
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      custom-keybindings = [
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+      ];
+    };
+
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+      name = "Kitty";
+      command = "kitty";
+      binding = "<Super>Return";
+    };
+
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+      name = "Firefox";
+      command = "firefox";
+      binding = "<Super>w";
+    };
+
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
       gtk-theme = orchisName;
       icon-theme = "Papirus-Dark";
-      cursor-theme = "Catppuccin-Macchiato-Blue";
+      cursor-theme = "catppuccin-macchiato-blue-cursors";
       toolbar-icons-size = "small";
     };
 
@@ -93,14 +97,6 @@ in
 
     "org/gnome/shell/extensions/blur-my-shell/applications" = {
       blur = true;
-    };
-  };
-
-  qt = {
-    enable = true;
-    platformTheme.name = "gtk3";
-    style = {
-      name = "adwaita-dark";
     };
   };
 }

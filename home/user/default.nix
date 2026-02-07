@@ -1,12 +1,13 @@
 {
   imports = [
-    ./git.nix
-    ./shell.nix
+    ./kitty.nix
     ./config.nix
+    ./environment.nix
+    ./git.nix
     ./packages.nix
     ./programs.nix
-    ./environment.nix
-    ./desktop
+    ./shell.nix
+    ./wm
     ./xdg.nix
   ];
 
