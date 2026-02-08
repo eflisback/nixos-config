@@ -5,7 +5,6 @@
     ./user
   ];
 
-  # SETUP - ersätt 'ebbe' med 'olle'
   home.username = "ebbe";
   home.homeDirectory = "/home/ebbe";
   home.stateVersion = "25.05";

@@ -3,7 +3,6 @@
   programs.firefox = {
     enable = true;
 
-    # SETUP - ersätt 'ebbe' med 'olle', eventuellt konfigurera Firefox
     profiles.ebbe = {
       id = 0;
       isDefault = true;

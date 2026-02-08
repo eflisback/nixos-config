@@ -10,8 +10,6 @@
           Enable = "Source,Sink,Media,Socket";
           Experimental = true;
           FastConnectable = true;
-
-          # PS5 controller pairing settings
           Privacy = "device";
           JustWorksRepairing = "always";
           Class = "0x000100";

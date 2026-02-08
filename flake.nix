@@ -30,7 +30,6 @@
             ./hosts/nucleus
             home-manager.nixosModules.home-manager
             {
-              # SETUP - ersätt 'ebbe' med 'olle'
               home-manager.users.ebbe = import ./hosts/nucleus/home.nix;
               home-manager.backupFileExtension = "backup";
               home-manager.extraSpecialArgs = {
@@ -49,7 +48,6 @@
             ./hosts/orbit
             home-manager.nixosModules.home-manager
             {
-              # SETUP - ersätt 'ebbe' med 'olle'
               home-manager.users.ebbe = import ./hosts/orbit/home.nix;
               home-manager.backupFileExtension = "backup";
               home-manager.extraSpecialArgs = {

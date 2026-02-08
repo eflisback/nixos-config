@@ -10,6 +10,7 @@
     gnumake
     lm_sensors
     fastfetch
+    nixfmt
     neovim
     ripgrep
     tldr
