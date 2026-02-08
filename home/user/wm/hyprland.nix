@@ -18,7 +18,7 @@
 
       general = {
         gaps_in = 4;
-        gaps_out = 8;
+        gaps_out = 5;
         border_size = 1;
         "col.active_border" = "rgba(88888888)";
         "col.inactive_border" = "rgba(00000088)";
@@ -140,30 +140,37 @@
       };
 
       appearance = {
-        style = "Solid";
+        style = "Island";
         font_family = "JetBrainsMono Nerd Font";
+        scale_factor = 1.15;
 
-        primary_color = "#f77adc";
-        success_color = "#9ece6a";
-        text_color = "#a9b1d6";
+        success_color = "#a6e3a1";
+        text_color = "#cdd6f4";
         workspace_colors = [
-          "#f77adc"
-          "#f77adc"
+          "#fab387"
+          "#b4befe"
+          "#cba6f7"
         ];
 
+        primary_color = {
+          base = "#fab387";
+          text = "#1e1e2e";
+        };
+
         danger_color = {
-          base = "#f7768e";
-          weak = "#e0af68";
+          base = "#f38ba8";
+          weak = "#f9e2af";
         };
 
         background_color = {
-          base = "#1a1b26";
-          weak = "#24283b";
-          strong = "#414868";
+          base = "#1e1e2e";
+          weak = "#313244";
+          strong = "#45475a";
         };
 
         secondary_color = {
-          base = "#0c0d14";
+          base = "#11111b";
+          strong = "#1b1b25";
         };
       };
     };

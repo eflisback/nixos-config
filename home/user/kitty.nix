@@ -12,7 +12,6 @@
       cursor_shape = "block";
       url_style = "dotted";
       confirm_os_window_close = 0;
-      hide_window_decorations = "yes";
       background_opacity = "0.8";
       window_padding_width = 12;
       window_padding_height = "8";
