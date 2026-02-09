@@ -78,7 +78,7 @@
         "$mod, W, exec, firefox"
         "$mod, D, exec, fuzzel"
         "$mod, P, exec, hyprpicker -a"
-        "$mod, S, exec, hyprshot -m region"
+        "$mod, S, exec, hyprshot -m region --clipboard-only"
         "$mod, L, exec, hyprlock"
 
         "$mod, left, movefocus, l"
@@ -186,7 +186,7 @@
     enable = true;
     settings = {
       main = {
-        font = "JetBrainsMono Nerd Font:size=11";
+        font = "JetBrainsMono Nerd Font:size=10";
         terminal = "kitty";
         layer = "overlay";
         width = 25;
@@ -216,7 +216,7 @@
     enable = true;
     settings = {
       "" = {
-        font = "JetBrainsMono Nerd Font 11";
+        font = "JetBrainsMono Nerd Font 10";
         background-color = "#24273add";
         text-color = "#cad3f5ff";
         border-color = "#8aadf4ff";
