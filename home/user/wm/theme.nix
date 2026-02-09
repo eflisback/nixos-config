@@ -3,10 +3,7 @@
 let
   orchisTheme = pkgs.orchis-theme;
   orchisName = "Orchis-Purple-Dark";
-  wallpaper = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/vinceliuice/Orchis-theme/master/wallpaper/4k.jpg";
-    sha256 = "0w85g0rymcc97h9znhsxmvpnq7f0iw9c21k2sxqd6rwklkv9fmph";
-  };
+  wallpaper = ../../../assets/wallpaper.png;
 in
 {
   _module.args.wallpaper = wallpaper;
