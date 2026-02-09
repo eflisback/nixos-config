@@ -2,7 +2,6 @@
 
 {
   home.packages = with pkgs; [
-    hyprlauncher
     hyprpicker
     wl-clipboard
     hyprshot
@@ -71,7 +70,7 @@
 
         "$mod, Return, exec, kitty"
         "$mod, W, exec, firefox"
-        "$mod, D, exec, hyprlauncher"
+        "$mod, D, exec, fuzzel"
         "$mod, P, exec, hyprpicker -a"
         "$mod, S, exec, hyprshot -m region"
 
@@ -114,7 +113,7 @@
     settings = {
       log_level = "warn";
       position = "Top";
-      app_launcher_cmd = "hyprlauncher";
+      app_launcher_cmd = "fuzzel";
 
       modules = {
         left = [
@@ -172,6 +171,56 @@
           base = "#11111b";
           strong = "#1b1b25";
         };
+      };
+    };
+  };
+
+  programs.fuzzel = {
+    enable = true;
+    settings = {
+      main = {
+        font = "JetBrainsMono Nerd Font:size=11";
+        terminal = "kitty";
+        layer = "overlay";
+        width = 25;
+        lines = 5;
+      };
+      colors = {
+        background = "24273add";
+        text = "cad3f5ff";
+        prompt = "b8c0e0ff";
+        placeholder = "8087a2ff";
+        input = "cad3f5ff";
+        match = "8aadf4ff";
+        selection = "5b6078ff";
+        selection-text = "cad3f5ff";
+        selection-match = "8aadf4ff";
+        counter = "8087a2ff";
+        border = "8aadf4ff";
+      };
+      border = {
+        width = 2;
+        radius = 10;
+      };
+    };
+  };
+
+  services.mako = {
+    enable = true;
+    settings = {
+      "" = {
+        font = "JetBrainsMono Nerd Font 11";
+        background-color = "#24273add";
+        text-color = "#cad3f5ff";
+        border-color = "#8aadf4ff";
+        progress-color = "over #363a4fff";
+        border-radius = 10;
+        border-size = 2;
+        padding = "10";
+        default-timeout = 5000;
+      };
+      "urgency=high" = {
+        border-color = "#f5a97fff";
       };
     };
   };
