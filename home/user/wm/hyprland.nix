@@ -1,4 +1,9 @@
-{ pkgs, wallpaper, ... }:
+{
+  lib,
+  pkgs,
+  wallpaper,
+  ...
+}:
 
 {
   home.packages = with pkgs; [
@@ -13,6 +18,7 @@
       exec-once = [
         "systemctl --user start hyprpolkitagent"
         "ashell"
+        "mako"
       ];
 
       general = {
@@ -224,6 +230,8 @@
       };
     };
   };
+
+  systemd.user.services.mako.Install.WantedBy = lib.mkForce [ ];
 
   services.hyprpaper = {
     enable = true;
