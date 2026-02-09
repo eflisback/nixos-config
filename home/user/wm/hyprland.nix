@@ -79,6 +79,7 @@
         "$mod, D, exec, fuzzel"
         "$mod, P, exec, hyprpicker -a"
         "$mod, S, exec, hyprshot -m region"
+        "$mod, L, exec, hyprlock"
 
         "$mod, left, movefocus, l"
         "$mod, right, movefocus, r"
@@ -232,6 +233,43 @@
   };
 
   systemd.user.services.mako.Install.WantedBy = lib.mkForce [ ];
+
+  programs.hyprlock = {
+    enable = true;
+    settings = {
+      general = {
+        fail_timeout = 500;
+        hide_cursor = true;
+        ignore_empty_input = true;
+      };
+
+      background = {
+        monitor = "";
+        path = "${wallpaper}";
+        brightness = 0.7;
+      };
+
+      input-field = {
+        monitor = "";
+        size = "300, 50";
+        outline_thickness = 2;
+        outer_color = "rgb(8aadf4)";
+        inner_color = "rgb(24273a)";
+        font_color = "rgb(cad3f5)";
+        fade_on_empty = true;
+        placeholder_text = "";
+        dots_size = 0.25;
+        dots_spacing = 0.3;
+        rounding = 10;
+        check_color = "rgb(a6e3a1)";
+        fail_color = "rgb(f38ba8)";
+        capslock_color = "rgb(f5a97f)";
+        position = "0, -50";
+        halign = "center";
+        valign = "center";
+      };
+    };
+  };
 
   services.hyprpaper = {
     enable = true;
