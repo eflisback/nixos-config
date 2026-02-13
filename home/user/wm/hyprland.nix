@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   pkgs,
   wallpaper,
@@ -76,7 +77,7 @@
 
         "$mod, Return, exec, kitty"
         "$mod, W, exec, firefox"
-        "$mod, D, exec, fuzzel"
+        "$mod, D, exec, rofi -show drun"
         "$mod, P, exec, hyprpicker -a"
         "$mod, S, exec, hyprshot -m region --clipboard-only"
         "$mod, L, exec, hyprlock"
@@ -120,7 +121,7 @@
     settings = {
       log_level = "warn";
       position = "Top";
-      app_launcher_cmd = "fuzzel";
+      app_launcher_cmd = "rofi -show drun";
 
       modules = {
         left = [
@@ -182,32 +183,62 @@
     };
   };
 
-  programs.fuzzel = {
+  programs.rofi = {
     enable = true;
-    settings = {
-      main = {
-        font = "JetBrainsMono Nerd Font:size=10";
-        terminal = "kitty";
-        layer = "overlay";
-        width = 25;
+    package = pkgs.rofi;
+    terminal = "kitty";
+    font = "JetBrainsMono Nerd Font 10";
+    extraConfig = {
+      show-icons = true;
+      drun-display-format = "{name}";
+    };
+    theme = let
+      inherit (config.lib.formats.rasi) mkLiteral;
+    in {
+      "*" = {
+        background-color = mkLiteral "transparent";
+        text-color = mkLiteral "#cad3f5";
+      };
+      window = {
+        background-color = mkLiteral "#24273add";
+        border = mkLiteral "2px";
+        border-color = mkLiteral "#8aadf4";
+        border-radius = mkLiteral "10px";
+        width = mkLiteral "400px";
+        padding = mkLiteral "10px";
+      };
+      mainbox = {
+        spacing = mkLiteral "10px";
+      };
+      inputbar = {
+        children = map mkLiteral [ "prompt" "entry" ];
+        spacing = mkLiteral "8px";
+      };
+      prompt = {
+        text-color = mkLiteral "#b8c0e0";
+      };
+      entry = {
+        placeholder = "Search...";
+        placeholder-color = mkLiteral "#8087a2";
+      };
+      listview = {
         lines = 5;
+        spacing = mkLiteral "5px";
       };
-      colors = {
-        background = "24273add";
-        text = "cad3f5ff";
-        prompt = "b8c0e0ff";
-        placeholder = "8087a2ff";
-        input = "cad3f5ff";
-        match = "8aadf4ff";
-        selection = "5b6078ff";
-        selection-text = "cad3f5ff";
-        selection-match = "8aadf4ff";
-        counter = "8087a2ff";
-        border = "8aadf4ff";
+      element = {
+        padding = mkLiteral "5px 10px";
+        border-radius = mkLiteral "5px";
+        spacing = mkLiteral "10px";
       };
-      border = {
-        width = 2;
-        radius = 10;
+      "element selected" = {
+        background-color = mkLiteral "#5b6078";
+      };
+      "element-text" = {
+        highlight = mkLiteral "bold";
+        text-color = mkLiteral "inherit";
+      };
+      "element-icon" = {
+        size = mkLiteral "24px";
       };
     };
   };
