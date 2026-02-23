@@ -12,6 +12,10 @@
     arduino-ide
     nodejs
     nodePackages.pnpm
+    biome
+    rustc
+    cargo
+    gcc
     claude-code
     godot-mono
     dotnet-sdk

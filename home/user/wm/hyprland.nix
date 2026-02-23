@@ -11,6 +11,7 @@
     hyprpicker
     wl-clipboard
     hyprshot
+    bluetui
   ];
 
   wayland.windowManager.hyprland = {
@@ -192,55 +193,60 @@
       show-icons = true;
       drun-display-format = "{name}";
     };
-    theme = let
-      inherit (config.lib.formats.rasi) mkLiteral;
-    in {
-      "*" = {
-        background-color = mkLiteral "transparent";
-        text-color = mkLiteral "#cad3f5";
+    theme =
+      let
+        inherit (config.lib.formats.rasi) mkLiteral;
+      in
+      {
+        "*" = {
+          background-color = mkLiteral "transparent";
+          text-color = mkLiteral "#cad3f5";
+        };
+        window = {
+          background-color = mkLiteral "#24273add";
+          border = mkLiteral "2px";
+          border-color = mkLiteral "#8aadf4";
+          border-radius = mkLiteral "10px";
+          width = mkLiteral "400px";
+          padding = mkLiteral "10px";
+        };
+        mainbox = {
+          spacing = mkLiteral "10px";
+        };
+        inputbar = {
+          children = map mkLiteral [
+            "prompt"
+            "entry"
+          ];
+          spacing = mkLiteral "8px";
+        };
+        prompt = {
+          text-color = mkLiteral "#b8c0e0";
+        };
+        entry = {
+          placeholder = "Search...";
+          placeholder-color = mkLiteral "#8087a2";
+        };
+        listview = {
+          lines = 5;
+          spacing = mkLiteral "5px";
+        };
+        element = {
+          padding = mkLiteral "5px 10px";
+          border-radius = mkLiteral "5px";
+          spacing = mkLiteral "10px";
+        };
+        "element selected" = {
+          background-color = mkLiteral "#5b6078";
+        };
+        "element-text" = {
+          highlight = mkLiteral "bold";
+          text-color = mkLiteral "inherit";
+        };
+        "element-icon" = {
+          size = mkLiteral "24px";
+        };
       };
-      window = {
-        background-color = mkLiteral "#24273add";
-        border = mkLiteral "2px";
-        border-color = mkLiteral "#8aadf4";
-        border-radius = mkLiteral "10px";
-        width = mkLiteral "400px";
-        padding = mkLiteral "10px";
-      };
-      mainbox = {
-        spacing = mkLiteral "10px";
-      };
-      inputbar = {
-        children = map mkLiteral [ "prompt" "entry" ];
-        spacing = mkLiteral "8px";
-      };
-      prompt = {
-        text-color = mkLiteral "#b8c0e0";
-      };
-      entry = {
-        placeholder = "Search...";
-        placeholder-color = mkLiteral "#8087a2";
-      };
-      listview = {
-        lines = 5;
-        spacing = mkLiteral "5px";
-      };
-      element = {
-        padding = mkLiteral "5px 10px";
-        border-radius = mkLiteral "5px";
-        spacing = mkLiteral "10px";
-      };
-      "element selected" = {
-        background-color = mkLiteral "#5b6078";
-      };
-      "element-text" = {
-        highlight = mkLiteral "bold";
-        text-color = mkLiteral "inherit";
-      };
-      "element-icon" = {
-        size = mkLiteral "24px";
-      };
-    };
   };
 
   services.mako = {
