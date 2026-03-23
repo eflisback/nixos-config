@@ -12,6 +12,8 @@
     desktop = null;
     publicShare = null;
     templates = null;
+
+    setSessionVariables = true;
   };
 
   home.file.".config/gtk-3.0/bookmarks".text = ''
