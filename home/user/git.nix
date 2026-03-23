@@ -7,6 +7,7 @@
       user.email = "ebbe.flisback@gmail.com";
       init.defaultBranch = "main";
       push.autoSetupRemote = true;
+      core.editor = "nvim";
     };
   };
 }
