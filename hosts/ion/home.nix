@@ -1,13 +1,8 @@
-{ inputs, pkgs, ... }:
+{ inputs, ... }:
 
 {
   imports = [
     ../../home/common.nix
-  ];
-
-  home.packages = with pkgs; [
-    slack
-    turbo
   ];
 
   wayland.windowManager.hyprland.settings = {
