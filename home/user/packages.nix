@@ -11,7 +11,7 @@
     android-studio
     arduino-ide
     nodejs
-    nodePackages.pnpm
+    pnpm
     biome
     rustc
     cargo
