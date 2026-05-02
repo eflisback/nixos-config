@@ -13,8 +13,7 @@
     nodejs
     pnpm
     biome
-    rustc
-    cargo
+    rustup
     gcc
     claude-code
     godot-mono
