@@ -71,6 +71,21 @@
             }
           ];
         };
+
+        zenith = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./hosts/zenith
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.users.ebbe = import ./hosts/zenith/home.nix;
+              home-manager.backupFileExtension = "backup";
+              home-manager.extraSpecialArgs = {
+                inherit pkgs-unstable inputs;
+              };
+            }
+          ];
+        };
       };
     };
 }
