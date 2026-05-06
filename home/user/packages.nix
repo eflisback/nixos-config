@@ -33,5 +33,6 @@
     vlc
     woeusb
     lolcat
+    stremio-linux-shell
   ];
 }

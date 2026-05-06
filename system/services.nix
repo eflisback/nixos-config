@@ -6,6 +6,11 @@
     openssh.enable = true;
     spice-vdagentd.enable = true;
 
+    mullvad-vpn = {
+      enable = true;
+      package = pkgs.mullvad-vpn;
+    };
+
     xserver = {
       enable = true;
       xkb.layout = "se";

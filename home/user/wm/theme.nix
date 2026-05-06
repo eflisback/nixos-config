@@ -3,7 +3,7 @@
 let
   orchisTheme = pkgs.orchis-theme;
   orchisName = "Orchis-Purple-Dark";
-  wallpaper = ../../../assets/wallpaper.png;
+  wallpaper = ../../../assets/wallpaper.jpg;
 in
 {
   _module.args.wallpaper = wallpaper;

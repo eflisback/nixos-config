@@ -25,8 +25,8 @@
       ];
 
       general = {
-        gaps_in = 3;
-        gaps_out = 3;
+        gaps_in = 2;
+        gaps_out = 4;
         border_size = 1;
         "col.active_border" = "rgba(88888888)";
         "col.inactive_border" = "rgba(00000088)";
@@ -158,7 +158,7 @@
       };
 
       appearance = {
-        style = "Island";
+        style = "Solid";
         font_family = "JetBrainsMono Nerd Font";
         scale_factor = 1.15;
 
