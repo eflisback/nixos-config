@@ -18,6 +18,7 @@
     enable = true;
     settings = {
       exec-once = [
+        "gnome-keyring-daemon --start --components=pkcs11,secrets,ssh"
         "systemctl --user start hyprpolkitagent"
         "ashell"
         "mako"
