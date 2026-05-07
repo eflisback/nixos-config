@@ -1,12 +1,17 @@
 {
-  config,
   lib,
   pkgs,
-  wallpaper,
+  inputs,
   ...
 }:
 
+let
+  wallpaperDir = "Pictures/Wallpapers";
+  wallpaperPath = "~/${wallpaperDir}/wallpaper.jpg";
+in
 {
+  imports = [ inputs.noctalia.homeModules.default ];
+
   home.packages = with pkgs; [
     hyprpicker
     wl-clipboard
@@ -14,14 +19,28 @@
     bluetui
   ];
 
+  home.file."${wallpaperDir}/wallpaper.jpg".source = ../../../assets/wallpapers/wallpaper.jpg;
+
+  home.activation.noctaliaWallpaperDefault = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    cache="$HOME/.cache/noctalia/wallpapers.json"
+    mkdir -p "$(dirname "$cache")"
+    if [ -f "$cache" ]; then
+      ${pkgs.jq}/bin/jq --arg w '${wallpaperPath}' \
+        '.defaultWallpaper = $w' "$cache" > "$cache.tmp" \
+        && mv "$cache.tmp" "$cache"
+    else
+      ${pkgs.jq}/bin/jq -n --arg w '${wallpaperPath}' \
+        '{defaultWallpaper: $w, usedRandomWallpapers: {}, wallpapers: {}}' > "$cache"
+    fi
+  '';
+
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
       exec-once = [
         "gnome-keyring-daemon --start --components=pkcs11,secrets,ssh"
         "systemctl --user start hyprpolkitagent"
-        "ashell"
-        "mako"
+        "noctalia-shell"
       ];
 
       general = {
@@ -79,10 +98,10 @@
 
         "$mod, Return, exec, kitty"
         "$mod, W, exec, firefox"
-        "$mod, D, exec, rofi -show drun"
+        "$mod, D, exec, noctalia-shell ipc call launcher toggle"
         "$mod, P, exec, hyprpicker -a"
         "$mod, S, exec, hyprshot -m region --clipboard-only"
-        "$mod, L, exec, hyprlock"
+        "$mod, L, exec, noctalia-shell ipc call lockScreen lock"
 
         "$mod, left, movefocus, l"
         "$mod, right, movefocus, r"
@@ -125,216 +144,79 @@
         vrr = 1;
       };
 
-      layerrule = [
-        "match:namespace ^ashell-main-layer$, blur 1, ignore_alpha 0.2"
-      ];
     };
   };
 
-  programs.ashell = {
+  programs.noctalia-shell = {
     enable = true;
+    colors = {
+      mPrimary          = "#c6a0f6";
+      mOnPrimary        = "#181926";
+      mSecondary        = "#8aadf4";
+      mOnSecondary      = "#181926";
+      mTertiary         = "#f5bde6";
+      mOnTertiary       = "#181926";
+      mError            = "#ed8796";
+      mOnError          = "#181926";
+      mSurface          = "#24273a";
+      mOnSurface        = "#cad3f5";
+      mSurfaceVariant   = "#363a4f";
+      mOnSurfaceVariant = "#b8c0e0";
+      mOutline          = "#6e738d";
+      mShadow           = "#000000";
+    };
     settings = {
-      log_level = "warn";
-      position = "Top";
-      app_launcher_cmd = "rofi -show drun";
-
-      modules = {
-        left = [
-          [
-            "Workspaces"
-          ]
-        ];
-        center = [ "WindowTitle" ];
-        right = [
-          "Tray"
-          "Clock"
-          "Settings"
-        ];
-      };
-
-      workspaces = {
-        enable_workspace_filling = false;
-        visibility_mode = "MonitorSpecific";
-      };
-
-      window_title = {
-        truncate_title_after_length = 100;
-      };
-
-      appearance = {
-        style = "Solid";
-        font_family = "JetBrainsMono Nerd Font";
-        scale_factor = 1.15;
-        opacity = 0.8;
-
-        success_color = "#a6e3a1";
-        text_color = "#cdd6f4";
-        workspace_colors = [
-          "#fab387"
-          "#b4befe"
-          "#cba6f7"
-        ];
-
-        primary_color = {
-          base = "#fab387";
-          text = "#1e1e2e";
-        };
-
-        danger_color = {
-          base = "#f38ba8";
-          weak = "#f9e2af";
-        };
-
-        background_color = {
-          base = "#1e1e2e";
-          weak = "#313244";
-          strong = "#45475a";
-        };
-
-        secondary_color = {
-          base = "#11111b";
-          strong = "#1b1b25";
-        };
-      };
-    };
-  };
-
-  programs.rofi = {
-    enable = true;
-    package = pkgs.rofi;
-    terminal = "kitty";
-    font = "JetBrainsMono Nerd Font 10";
-    extraConfig = {
-      show-icons = true;
-      drun-display-format = "{name}";
-    };
-    theme =
-      let
-        inherit (config.lib.formats.rasi) mkLiteral;
-      in
-      {
-        "*" = {
-          background-color = mkLiteral "transparent";
-          text-color = mkLiteral "#cad3f5";
-        };
-        window = {
-          background-color = mkLiteral "#24273add";
-          border = mkLiteral "2px";
-          border-color = mkLiteral "#8aadf4";
-          border-radius = mkLiteral "10px";
-          width = mkLiteral "400px";
-          padding = mkLiteral "10px";
-        };
-        mainbox = {
-          spacing = mkLiteral "10px";
-        };
-        inputbar = {
-          children = map mkLiteral [
-            "prompt"
-            "entry"
+      settingsVersion = 59;
+      bar = {
+        position = "top";
+        barType = "floating";
+        marginVertical = 4;
+        marginHorizontal = 4;
+        outerCorners = false;
+        backgroundOpacity = 0.8;
+        frameRadius = 10;
+        widgets = {
+          left = [
+            { id = "Launcher"; useDistroLogo = true; }
+            { id = "SystemMonitor"; }
+            { id = "ActiveWindow"; }
           ];
-          spacing = mkLiteral "8px";
-        };
-        prompt = {
-          text-color = mkLiteral "#b8c0e0";
-        };
-        entry = {
-          placeholder = "Search...";
-          placeholder-color = mkLiteral "#8087a2";
-        };
-        listview = {
-          lines = 5;
-          spacing = mkLiteral "5px";
-        };
-        element = {
-          padding = mkLiteral "5px 10px";
-          border-radius = mkLiteral "5px";
-          spacing = mkLiteral "10px";
-        };
-        "element selected" = {
-          background-color = mkLiteral "#5b6078";
-        };
-        "element-text" = {
-          highlight = mkLiteral "bold";
-          text-color = mkLiteral "inherit";
-        };
-        "element-icon" = {
-          size = mkLiteral "24px";
+          center = [
+            { id = "Workspace"; }
+          ];
+          right = [
+            { id = "Tray"; drawerEnabled = false; }
+            { id = "NotificationHistory"; }
+            { id = "Volume"; }
+            { id = "Clock"; }
+            { id = "ControlCenter"; }
+          ];
         };
       };
-  };
-
-  services.mako = {
-    enable = true;
-    settings = {
-      "" = {
-        font = "JetBrainsMono Nerd Font 10";
-        background-color = "#24273add";
-        text-color = "#cad3f5ff";
-        border-color = "#8aadf4ff";
-        progress-color = "over #363a4fff";
-        border-radius = 10;
-        border-size = 2;
-        padding = "10";
-        default-timeout = 5000;
-      };
-      "urgency=high" = {
-        border-color = "#f5a97fff";
-      };
-    };
-  };
-
-  systemd.user.services.mako.Install.WantedBy = lib.mkForce [ ];
-
-  programs.hyprlock = {
-    enable = true;
-    settings = {
       general = {
-        fail_timeout = 500;
-        hide_cursor = true;
-        ignore_empty_input = true;
+        avatarImage = "/var/lib/AccountsService/icons/ebbe";
+        telemetryEnabled = false;
+        enableShadows = false;
       };
-
-      background = {
-        monitor = "";
-        path = "${wallpaper}";
-        brightness = 0.7;
+      ui = {
+        fontDefault = "JetBrainsMono Nerd Font";
       };
-
-      input-field = {
-        monitor = "";
-        size = "300, 50";
-        outline_thickness = 2;
-        outer_color = "rgb(8aadf4)";
-        inner_color = "rgb(24273a)";
-        font_color = "rgb(cad3f5)";
-        fade_on_empty = true;
-        placeholder_text = "";
-        dots_size = 0.25;
-        dots_spacing = 0.3;
-        rounding = 10;
-        check_color = "rgb(a6e3a1)";
-        fail_color = "rgb(f38ba8)";
-        capslock_color = "rgb(f5a97f)";
-        position = "0, -50";
-        halign = "center";
-        valign = "center";
+      location = {
+        name = "Lund, Sweden";
+        autoLocate = false;
       };
-    };
-  };
-
-  services.hyprpaper = {
-    enable = true;
-    settings = {
-      splash = false;
-      preload = [ "${wallpaper}" ];
-      wallpaper = [
-        {
-          monitor = "";
-          path = "${wallpaper}";
-          fit_mode = "cover";
-        }
-      ];
+      wallpaper = {
+        enabled = true;
+        directory = "~/${wallpaperDir}";
+        transitionType = [ "fade" ];
+        transitionDuration = 1000;
+      };
+      colorSchemes = {
+        useWallpaperColors = false;
+      };
+      appLauncher = {
+        terminalCommand = "kitty -e";
+      };
     };
   };
 }

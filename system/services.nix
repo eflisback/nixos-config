@@ -15,5 +15,8 @@
       enable = true;
       xkb.layout = "se";
     };
+
+    power-profiles-daemon.enable = true;
+    upower.enable = true;
   };
 }
