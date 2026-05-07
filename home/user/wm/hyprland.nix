@@ -124,6 +124,10 @@
         disable_hyprland_logo = true;
         vrr = 1;
       };
+
+      layerrule = [
+        "match:namespace ^ashell-main-layer$, blur 1, ignore_alpha 0.2"
+      ];
     };
   };
 
@@ -161,6 +165,7 @@
         style = "Solid";
         font_family = "JetBrainsMono Nerd Font";
         scale_factor = 1.15;
+        opacity = 0.8;
 
         success_color = "#a6e3a1";
         text_color = "#cdd6f4";
