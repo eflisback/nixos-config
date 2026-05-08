@@ -98,7 +98,7 @@ in
       bind = [
         "$mod, Q, killactive,"
         "$mod, F, fullscreen,"
-        "$mod, A, togglefloating,"
+        "$mod, A, exec, hyprctl dispatch togglefloating && hyprctl dispatch resizeactive exact 900 600"
 
         "$mod, Return, exec, kitty"
         "$mod, W, exec, firefox"
