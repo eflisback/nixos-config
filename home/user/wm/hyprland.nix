@@ -1,17 +1,68 @@
 {
   pkgs,
   inputs,
+  config,
   ...
 }:
 
 let
+  orchisTheme = pkgs.orchis-theme;
+  orchisName = "Orchis-Purple-Dark";
   wallpaperSource = ../../../assets/wallpapers/wallpaper.jpg;
   wallpaperDir = "Pictures/Wallpapers";
 in
 {
   imports = [ inputs.noctalia.homeModules.default ];
 
+  home.pointerCursor = {
+    name = "catppuccin-macchiato-blue-cursors";
+    package = pkgs.catppuccin-cursors.macchiatoBlue;
+    size = 24;
+    gtk.enable = true;
+  };
+
+  gtk = {
+    enable = true;
+
+    cursorTheme = {
+      name = "catppuccin-macchiato-blue-cursors";
+      package = pkgs.catppuccin-cursors.macchiatoBlue;
+    };
+
+    theme = {
+      name = orchisName;
+      package = orchisTheme;
+    };
+
+    iconTheme = {
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
+    };
+
+    gtk3.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
+
+    gtk4.extraConfig = {
+      gtk-application-prefer-dark-theme = 1;
+    };
+
+    gtk4.theme = config.gtk.theme;
+  };
+
+  qt = {
+    enable = true;
+    platformTheme.name = "gtk3";
+    style.name = "adwaita-dark";
+  };
+
   home.packages = with pkgs; [
+    gtk-engine-murrine
+    adwaita-icon-theme
+    hicolor-icon-theme
+    nautilus
+    gnome-calculator
+    gnome-disk-utility
     hyprpicker
     wl-clipboard
     hyprshot
