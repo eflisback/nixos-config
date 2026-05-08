@@ -1,13 +1,12 @@
 {
-  lib,
   pkgs,
   inputs,
   ...
 }:
 
 let
+  wallpaperSource = ../../../assets/wallpapers/wallpaper.jpg;
   wallpaperDir = "Pictures/Wallpapers";
-  wallpaperPath = "~/${wallpaperDir}/wallpaper.jpg";
 in
 {
   imports = [ inputs.noctalia.homeModules.default ];
@@ -19,20 +18,13 @@ in
     bluetui
   ];
 
-  home.file."${wallpaperDir}/wallpaper.jpg".source = ../../../assets/wallpapers/wallpaper.jpg;
+  home.file."${wallpaperDir}/wallpaper.jpg".source = wallpaperSource;
 
-  home.activation.noctaliaWallpaperDefault = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    cache="$HOME/.cache/noctalia/wallpapers.json"
-    mkdir -p "$(dirname "$cache")"
-    if [ -f "$cache" ]; then
-      ${pkgs.jq}/bin/jq --arg w '${wallpaperPath}' \
-        '.defaultWallpaper = $w' "$cache" > "$cache.tmp" \
-        && mv "$cache.tmp" "$cache"
-    else
-      ${pkgs.jq}/bin/jq -n --arg w '${wallpaperPath}' \
-        '{defaultWallpaper: $w, usedRandomWallpapers: {}, wallpapers: {}}' > "$cache"
-    fi
-  '';
+  home.file.".cache/noctalia/wallpapers.json".text = builtins.toJSON {
+    defaultWallpaper = toString wallpaperSource;
+    usedRandomWallpapers = { };
+    wallpapers = { };
+  };
 
   wayland.windowManager.hyprland = {
     enable = true;
