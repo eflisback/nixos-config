@@ -37,6 +37,10 @@ in
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
+      env = [
+        "NIXOS_OZONE_WL,1"
+      ];
+
       exec-once = [
         "gnome-keyring-daemon --start --components=pkcs11,secrets,ssh"
         "systemctl --user start hyprpolkitagent"
@@ -186,7 +190,6 @@ in
           ];
           right = [
             { id = "Tray"; drawerEnabled = false; }
-            { id = "NotificationHistory"; }
             { id = "Volume"; }
             { id = "Clock"; }
             { id = "ControlCenter"; }
