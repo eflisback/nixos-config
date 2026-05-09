@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, lib, ... }:
 
 {
   imports = [
@@ -6,6 +6,14 @@
   ];
 
   home.packages = [ pkgs.qsynth ];
+
+  programs.noctalia-shell.settings.bar.widgets.right = lib.mkForce [
+    { id = "Tray"; drawerEnabled = false; }
+    { id = "Battery"; }
+    { id = "Volume"; }
+    { id = "Clock"; }
+    { id = "ControlCenter"; }
+  ];
 
   wayland.windowManager.hyprland.settings = {
     monitor = [

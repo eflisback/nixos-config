@@ -1,8 +1,16 @@
-{ inputs, ... }:
+{ inputs, lib, ... }:
 
 {
   imports = [
     ../../home/common.nix
+  ];
+
+  programs.noctalia-shell.settings.bar.widgets.right = lib.mkForce [
+    { id = "Tray"; drawerEnabled = false; }
+    { id = "Battery"; }
+    { id = "Volume"; }
+    { id = "Clock"; }
+    { id = "ControlCenter"; }
   ];
 
   wayland.windowManager.hyprland.settings = {
