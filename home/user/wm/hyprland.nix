@@ -8,8 +8,6 @@
 let
   orchisTheme = pkgs.orchis-theme;
   orchisName = "Orchis-Purple-Dark";
-  wallpaperSource = ../../../assets/wallpapers/wallpaper.jpg;
-  wallpaperDir = "Pictures/Wallpapers";
 in
 {
   imports = [ inputs.noctalia.homeModules.default ];
@@ -68,14 +66,6 @@ in
     hyprshot
     bluetui
   ];
-
-  home.file."${wallpaperDir}/wallpaper.jpg".source = wallpaperSource;
-
-  home.file.".cache/noctalia/wallpapers.json".text = builtins.toJSON {
-    defaultWallpaper = toString wallpaperSource;
-    usedRandomWallpapers = { };
-    wallpapers = { };
-  };
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -253,7 +243,7 @@ in
       };
       wallpaper = {
         enabled = true;
-        directory = "~/${wallpaperDir}";
+        directory = "~/nixos-config/assets/wallpapers";
         transitionType = [ "fade" ];
         transitionDuration = 1000;
       };
