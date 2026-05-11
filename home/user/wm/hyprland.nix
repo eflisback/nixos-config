@@ -243,7 +243,7 @@ in
       };
       wallpaper = {
         enabled = true;
-        directory = "~/nixos-config/assets/wallpapers";
+        directory = "/home/ebbe/nixos-config/assets/wallpapers";
         transitionType = [ "fade" ];
         transitionDuration = 1000;
       };
