@@ -187,20 +187,20 @@ in
   programs.noctalia-shell = {
     enable = true;
     colors = {
-      mPrimary          = "#c6a0f6";
-      mOnPrimary        = "#181926";
-      mSecondary        = "#8aadf4";
-      mOnSecondary      = "#181926";
-      mTertiary         = "#f5bde6";
-      mOnTertiary       = "#181926";
-      mError            = "#ed8796";
-      mOnError          = "#181926";
-      mSurface          = "#24273a";
-      mOnSurface        = "#cad3f5";
-      mSurfaceVariant   = "#363a4f";
+      mPrimary = "#c6a0f6";
+      mOnPrimary = "#181926";
+      mSecondary = "#8aadf4";
+      mOnSecondary = "#181926";
+      mTertiary = "#f5bde6";
+      mOnTertiary = "#181926";
+      mError = "#ed8796";
+      mOnError = "#181926";
+      mSurface = "#24273a";
+      mOnSurface = "#cad3f5";
+      mSurfaceVariant = "#363a4f";
       mOnSurfaceVariant = "#b8c0e0";
-      mOutline          = "#6e738d";
-      mShadow           = "#000000";
+      mOutline = "#6e738d";
+      mShadow = "#000000";
     };
     settings = {
       settingsVersion = 59;
@@ -214,7 +214,10 @@ in
         frameRadius = 10;
         widgets = {
           left = [
-            { id = "Launcher"; useDistroLogo = true; }
+            {
+              id = "Launcher";
+              useDistroLogo = true;
+            }
             { id = "SystemMonitor"; }
             { id = "ActiveWindow"; }
           ];
@@ -222,7 +225,10 @@ in
             { id = "Workspace"; }
           ];
           right = [
-            { id = "Tray"; drawerEnabled = false; }
+            {
+              id = "Tray";
+              drawerEnabled = false;
+            }
             { id = "Volume"; }
             { id = "Clock"; }
             { id = "ControlCenter"; }

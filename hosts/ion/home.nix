@@ -5,8 +5,15 @@
     ../../home/common.nix
   ];
 
+  addons.productivity.enable = true;
+  addons.media.enable = true;
+  addons.social.enable = true;
+
   programs.noctalia-shell.settings.bar.widgets.right = lib.mkForce [
-    { id = "Tray"; drawerEnabled = false; }
+    {
+      id = "Tray";
+      drawerEnabled = false;
+    }
     { id = "Battery"; }
     { id = "Volume"; }
     { id = "Clock"; }

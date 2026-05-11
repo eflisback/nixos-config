@@ -1,14 +1,27 @@
-{ inputs, pkgs, lib, ... }:
+{
+  inputs,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   imports = [
     ../../home/common.nix
   ];
 
+  addons.productivity.enable = true;
+  addons.games.enable = true;
+  addons.media.enable = true;
+  addons.social.enable = true;
+
   home.packages = [ pkgs.qsynth ];
 
   programs.noctalia-shell.settings.bar.widgets.right = lib.mkForce [
-    { id = "Tray"; drawerEnabled = false; }
+    {
+      id = "Tray";
+      drawerEnabled = false;
+    }
     { id = "Battery"; }
     { id = "Volume"; }
     { id = "Clock"; }

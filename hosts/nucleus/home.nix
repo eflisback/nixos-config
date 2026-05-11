@@ -5,6 +5,11 @@
     ../../home/common.nix
   ];
 
+  addons.productivity.enable = true;
+  addons.games.enable = true;
+  addons.media.enable = true;
+  addons.social.enable = true;
+
   wayland.windowManager.hyprland.settings = {
     monitor = [
       "DP-3,1920x1080@144,0x0,1"

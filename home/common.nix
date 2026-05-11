@@ -3,6 +3,7 @@
 {
   imports = [
     ./user
+    ../addons/home
   ];
 
   home.username = "ebbe";

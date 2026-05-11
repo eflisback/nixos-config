@@ -3,7 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../system
+    ./system.nix
   ];
 
   networking.hostName = "orbit";

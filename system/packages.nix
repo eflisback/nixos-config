@@ -25,5 +25,8 @@
     tree
     cowsay
     sl
+    woeusb
+    lolcat
+    imagemagick
   ];
 }
