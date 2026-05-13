@@ -6,7 +6,6 @@
   ];
 
   addons.productivity.enable = true;
-  addons.media.enable = true;
   addons.social.enable = true;
 
   programs.noctalia-shell.settings.bar.widgets.right = lib.mkForce [
