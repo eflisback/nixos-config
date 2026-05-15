@@ -10,8 +10,6 @@
 
   config = lib.mkIf config.addons.games.enable {
     home.packages = with pkgs; [
-      steam
-      steam-run
       prismlauncher
     ];
   };
