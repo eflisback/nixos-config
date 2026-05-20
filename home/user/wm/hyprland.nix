@@ -69,6 +69,7 @@ in
 
   wayland.windowManager.hyprland = {
     enable = true;
+    configType = "hyprlang";
     settings = {
       env = [
         "NIXOS_OZONE_WL,1"
