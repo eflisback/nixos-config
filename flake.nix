@@ -8,6 +8,10 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     noctalia.url = "github:noctalia-dev/noctalia-shell";
     noctalia.inputs.nixpkgs.follows = "nixpkgs";
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v1.0.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -16,6 +20,7 @@
       nixpkgs,
       nixpkgs-unstable,
       home-manager,
+      lanzaboote,
       ...
     }@inputs:
     let
@@ -29,6 +34,7 @@
         nucleus = lib.nixosSystem {
           inherit system;
           modules = [
+            lanzaboote.nixosModules.lanzaboote
             ./hosts/nucleus
             home-manager.nixosModules.home-manager
             {
@@ -47,6 +53,7 @@
         orbit = lib.nixosSystem {
           inherit system;
           modules = [
+            lanzaboote.nixosModules.lanzaboote
             ./hosts/orbit
             home-manager.nixosModules.home-manager
             {
@@ -62,6 +69,7 @@
         ion = lib.nixosSystem {
           inherit system;
           modules = [
+            lanzaboote.nixosModules.lanzaboote
             ./hosts/ion
             home-manager.nixosModules.home-manager
             {
@@ -77,6 +85,7 @@
         zenith = lib.nixosSystem {
           inherit system;
           modules = [
+            lanzaboote.nixosModules.lanzaboote
             ./hosts/zenith
             home-manager.nixosModules.home-manager
             {
