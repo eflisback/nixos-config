@@ -4,5 +4,6 @@
     ./nvidia.nix
     ./steam.nix
     ./work.nix
+    ./printing.nix
   ];
 }
