@@ -19,6 +19,8 @@
     home-manager.users.ebbe.home.packages = with pkgs; [
       turbo
       gh
+      awscli2
+      chromium
     ];
   };
 }
