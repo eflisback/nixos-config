@@ -17,6 +17,7 @@
       rustup
       gcc
       claude-code
+      rtk
       android-studio
       arduino-ide
       godot-mono
