@@ -17,15 +17,12 @@
 
   home.packages = [ pkgs.qsynth ];
 
-  programs.noctalia-shell.settings.bar.widgets.right = lib.mkForce [
-    {
-      id = "Tray";
-      drawerEnabled = false;
-    }
-    { id = "Battery"; }
-    { id = "Volume"; }
-    { id = "Clock"; }
-    { id = "ControlCenter"; }
+  programs.noctalia.settings.bar.main.end = lib.mkForce [
+    "tray"
+    "battery"
+    "volume"
+    "clock"
+    "control-center"
   ];
 
   wayland.windowManager.hyprland.settings = {
