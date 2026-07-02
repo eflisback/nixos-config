@@ -78,7 +78,7 @@ in
       exec-once = [
         "gnome-keyring-daemon --start --components=pkcs11,secrets,ssh"
         "systemctl --user start hyprpolkitagent"
-        "noctalia-shell"
+        "noctalia"
       ];
 
       general = {
@@ -136,10 +136,10 @@ in
 
         "$mod, Return, exec, kitty"
         "$mod, W, exec, firefox"
-        "$mod, D, exec, noctalia-shell ipc call launcher toggle"
+        "$mod, D, exec, noctalia msg panel-toggle launcher"
         "$mod, P, exec, hyprpicker -a"
         "$mod, S, exec, hyprshot -m region --clipboard-only"
-        "$mod, L, exec, noctalia-shell ipc call lockScreen lock"
+        "$mod, L, exec, noctalia msg session lock"
 
         "$mod, left, movefocus, l"
         "$mod, right, movefocus, r"
@@ -185,80 +185,39 @@ in
     };
   };
 
-  programs.noctalia-shell = {
+  programs.noctalia = {
     enable = true;
-    colors = {
-      mPrimary = "#c6a0f6";
-      mOnPrimary = "#181926";
-      mSecondary = "#8aadf4";
-      mOnSecondary = "#181926";
-      mTertiary = "#f5bde6";
-      mOnTertiary = "#181926";
-      mError = "#ed8796";
-      mOnError = "#181926";
-      mSurface = "#24273a";
-      mOnSurface = "#cad3f5";
-      mSurfaceVariant = "#363a4f";
-      mOnSurfaceVariant = "#b8c0e0";
-      mOutline = "#6e738d";
-      mShadow = "#000000";
-    };
     settings = {
-      settingsVersion = 59;
-      bar = {
+      shell = {
+        font_family = "JetBrainsMono Nerd Font";
+        telemetry_enabled = false;
+        avatar_path = "/var/lib/AccountsService/icons/ebbe";
+      };
+      theme = {
+        mode = "dark";
+        source = "builtin";
+        builtin = "Catppuccin";
+      };
+      bar.main = {
         position = "top";
-        barType = "floating";
-        marginVertical = 4;
-        marginHorizontal = 4;
-        outerCorners = false;
-        backgroundOpacity = 0.8;
-        frameRadius = 10;
-        widgets = {
-          left = [
-            {
-              id = "Launcher";
-              useDistroLogo = true;
-            }
-            { id = "SystemMonitor"; }
-            { id = "ActiveWindow"; }
-          ];
-          center = [
-            { id = "Workspace"; }
-          ];
-          right = [
-            {
-              id = "Tray";
-              drawerEnabled = false;
-            }
-            { id = "Volume"; }
-            { id = "Clock"; }
-            { id = "ControlCenter"; }
-          ];
-        };
-      };
-      general = {
-        avatarImage = "/var/lib/AccountsService/icons/ebbe";
-        telemetryEnabled = false;
-        enableShadows = false;
-      };
-      ui = {
-        fontDefault = "JetBrainsMono Nerd Font";
-      };
-      location = {
-        name = "Lund, Sweden";
-        autoLocate = false;
+        margin_h = 4;
+        margin_v = 4;
+        background_opacity = 0.8;
+        radius = 10;
+        shadow = false;
+        start = [ "launcher" "cpu" "active_window" ];
+        center = [ "workspaces" ];
+        end = [ "tray" "volume" "clock" "control-center" ];
       };
       wallpaper = {
         enabled = true;
         directory = "/home/ebbe/nixos-config/assets/wallpapers";
-        transitionType = [ "fade" ];
-        transitionDuration = 1000;
+        transition = [ "fade" ];
+        transition_duration = 1000;
       };
-      colorSchemes = {
-        useWallpaperColors = false;
-      };
-      appLauncher = {
-        terminalCommand = "kitty -e";
+      location = {
+        auto_locate = false;
+        address = "Lund, Sweden";
       };
     };
   };
