@@ -17,6 +17,9 @@
 
   home.packages = [ pkgs.qsynth ];
 
+  programs.noctalia.settings.wallpaper.default.path =
+    "/home/ebbe/nixos-config/assets/wallpapers/endurance.jpg";
+
   programs.noctalia.settings.bar.main.end = lib.mkForce [
     "tray"
     "battery"

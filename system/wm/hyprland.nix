@@ -7,6 +7,8 @@
     withUWSM = true;
   };
 
+  services.displayManager.defaultSession = "hyprland-uwsm";
+
   services.gnome.gnome-keyring.enable = true;
 
   environment.systemPackages = with pkgs; [

@@ -12,6 +12,9 @@ in
 {
   imports = [ inputs.noctalia.homeModules.default ];
 
+  xdg.configFile."systemd/user/graphical-session.target.wants/hyprpolkitagent.service".source =
+    "${pkgs.hyprpolkitagent}/share/systemd/user/hyprpolkitagent.service";
+
   home.pointerCursor = {
     enable = true;
     name = "catppuccin-macchiato-blue-cursors";
@@ -74,12 +77,6 @@ in
     settings = {
       env = [
         "NIXOS_OZONE_WL,1"
-      ];
-
-      exec-once = [
-        "gnome-keyring-daemon --start --components=pkcs11,secrets,ssh"
-        "systemctl --user start hyprpolkitagent"
-        "noctalia"
       ];
 
       general = {
@@ -183,11 +180,16 @@ in
         vrr = 1;
       };
 
+      cursor = {
+        no_hardware_cursors = true;
+      };
+
     };
   };
 
   programs.noctalia = {
     enable = true;
+    systemd.enable = true;
     settings = {
       shell = {
         font_family = "JetBrainsMono Nerd Font";
@@ -201,8 +203,8 @@ in
       };
       bar.main = {
         position = "top";
-        margin_h = 4;
-        margin_v = 4;
+        margin_edge = 4;
+        margin_ends = 4;
         background_opacity = 0.8;
         radius = 10;
         shadow = false;

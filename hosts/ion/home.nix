@@ -8,6 +8,9 @@
   addons.productivity.enable = true;
   addons.social.enable = true;
 
+  programs.noctalia.settings.wallpaper.default.path =
+    "/home/ebbe/nixos-config/assets/wallpapers/abstract.jpg";
+
   programs.noctalia.settings.bar.main.end = lib.mkForce [
     "tray"
     "battery"

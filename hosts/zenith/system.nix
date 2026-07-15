@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 
 {
   imports = [
@@ -6,4 +6,6 @@
   ];
 
   addons.steam.enable = true;
+
+  hardware.nvidia.open = lib.mkForce false;
 }

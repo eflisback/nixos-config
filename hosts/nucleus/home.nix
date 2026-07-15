@@ -10,6 +10,9 @@
   addons.media.enable = true;
   addons.social.enable = true;
 
+  programs.noctalia.settings.wallpaper.default.path =
+    "/home/ebbe/nixos-config/assets/wallpapers/hail_mary.jpg";
+
   wayland.windowManager.hyprland.settings = {
     monitor = [
       "DP-3,1920x1080@144,0x0,1"
