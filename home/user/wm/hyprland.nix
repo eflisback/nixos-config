@@ -58,6 +58,10 @@ in
     style.name = "adwaita-dark";
   };
 
+  dconf.settings = {
+    "org/gnome/desktop/interface".color-scheme = "prefer-dark";
+  };
+
   home.packages = with pkgs; [
     gtk-engine-murrine
     adwaita-icon-theme
