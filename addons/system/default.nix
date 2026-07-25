@@ -5,5 +5,6 @@
     ./steam.nix
     ./work.nix
     ./printing.nix
+    ./docker.nix
   ];
 }

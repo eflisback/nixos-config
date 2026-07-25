@@ -9,4 +9,5 @@
   addons.nvidia.enable = true;
   addons.steam.enable = true;
   addons.work.enable = true;
+  addons.docker.enable = true;
 }

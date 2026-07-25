@@ -25,6 +25,7 @@
       blender
       gimp
       audacity
+      just
     ];
   };
 }
