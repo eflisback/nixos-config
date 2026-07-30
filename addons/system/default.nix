@@ -6,5 +6,6 @@
     ./work.nix
     ./printing.nix
     ./docker.nix
+    ./vpn.nix
   ];
 }
