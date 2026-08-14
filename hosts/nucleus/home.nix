@@ -9,6 +9,7 @@
   addons.games.enable = true;
   addons.media.enable = true;
   addons.social.enable = true;
+  addons.autoSuspend.enable = true;
 
   programs.noctalia.settings.wallpaper.default.path =
     "/home/ebbe/nixos-config/assets/wallpapers/hail_mary.jpg";
