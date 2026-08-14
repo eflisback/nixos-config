@@ -6,8 +6,8 @@
 }:
 
 let
-  orchisTheme = pkgs.orchis-theme;
-  orchisName = "Orchis-Purple-Dark";
+  gtkTheme = pkgs.adw-gtk3;
+  gtkThemeName = "adw-gtk3-dark";
 in
 {
   imports = [ inputs.noctalia.homeModules.default ];
@@ -32,8 +32,8 @@ in
     };
 
     theme = {
-      name = orchisName;
-      package = orchisTheme;
+      name = gtkThemeName;
+      package = gtkTheme;
     };
 
     iconTheme = {
@@ -63,7 +63,6 @@ in
   };
 
   home.packages = with pkgs; [
-    gtk-engine-murrine
     adwaita-icon-theme
     hicolor-icon-theme
     nautilus
@@ -78,6 +77,10 @@ in
   wayland.windowManager.hyprland = {
     enable = true;
     configType = "hyprlang";
+
+    # We rely on UWSM to manage the session.
+    systemd.enable = false;
+
     settings = {
       env = [
         "NIXOS_OZONE_WL,1"
