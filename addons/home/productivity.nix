@@ -1,4 +1,10 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   options.addons.productivity.enable = lib.mkEnableOption "productivity and creative tools";
@@ -26,6 +32,42 @@
       gimp
       audacity
       just
+      nixd
+      nixfmt
     ];
+
+    nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+
+    programs.vscodium = {
+      enable = true;
+      profiles.default = {
+        extensions = with pkgs.vscode-extensions; [
+          jnoortheen.nix-ide
+          eamodio.gitlens
+          rust-lang.rust-analyzer
+          ms-python.python
+          enkia.tokyo-night
+          oxc.oxc-vscode
+          scala-lang.scala
+          scalameta.metals
+        ];
+        userSettings = {
+          "workbench.colorTheme" = "Tokyo Night";
+          "editor.formatOnSave" = true;
+          "editor.formatOnPaste" = true;
+
+          "nix.enableLanguageServer" = true;
+          "nix.serverPath" = "nixd";
+          "nix.serverSettings".nixd.formatting.command = [ "nixfmt" ];
+
+          "rust-analyzer.server.extraEnv".LD_LIBRARY_PATH = "${pkgs.zlib}/lib";
+
+          "files.watcherExclude" = {
+            "**/.bloop/**" = true;
+            "**/.metals/**/*.{java,scala}" = true;
+          };
+        };
+      };
+    };
   };
 }

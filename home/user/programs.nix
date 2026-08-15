@@ -25,8 +25,4 @@
   xdg.configFile."mimeapps.list".force = true;
 
   programs.home-manager.enable = true;
-
-  programs.vscodium = {
-    enable = true;
-  };
 }
