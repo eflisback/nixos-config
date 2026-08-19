@@ -14,6 +14,7 @@
   addons.games.enable = true;
   addons.media.enable = true;
   addons.social.enable = true;
+  addons.autoSuspend.enable = true;
 
   home.packages = [ pkgs.qsynth ];
 
