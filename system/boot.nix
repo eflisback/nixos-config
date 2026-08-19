@@ -1,11 +1,4 @@
 {
-  config,
-  pkgs,
-  lib,
-  ...
-}:
-
-{
   boot = {
     tmp.cleanOnBoot = true;
     loader = {

@@ -1,5 +1,3 @@
-{ ... }:
-
 {
   nixpkgs.overlays = [
     # Upstream retagged nanoemoji v0.16.0, so the hash pinned in the current

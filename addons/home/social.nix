@@ -13,6 +13,6 @@
       discord
       signal-desktop
       slack
-];
+    ];
   };
 }
