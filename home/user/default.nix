@@ -1,7 +1,6 @@
 {
   imports = [
     ./kitty.nix
-    ./config.nix
     ./environment.nix
     ./git.nix
     ./packages.nix
