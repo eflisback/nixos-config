@@ -7,4 +7,5 @@
   addons.work.enable = true;
   addons.docker.enable = true;
   addons.vpn.enable = true;
+  addons.kdeconnect.enable = true;
 }

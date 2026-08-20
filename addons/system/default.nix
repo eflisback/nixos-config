@@ -7,5 +7,6 @@
     ./printing.nix
     ./docker.nix
     ./vpn.nix
+    ./kdeconnect.nix
   ];
 }
