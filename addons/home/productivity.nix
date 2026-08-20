@@ -51,22 +51,6 @@
           scala-lang.scala
           scalameta.metals
         ];
-        userSettings = {
-          "workbench.colorTheme" = "Tokyo Night";
-          "editor.formatOnSave" = true;
-          "editor.formatOnPaste" = true;
-
-          "nix.enableLanguageServer" = true;
-          "nix.serverPath" = "nixd";
-          "nix.serverSettings".nixd.formatting.command = [ "nixfmt" ];
-
-          "rust-analyzer.server.extraEnv".LD_LIBRARY_PATH = "${pkgs.zlib}/lib";
-
-          "files.watcherExclude" = {
-            "**/.bloop/**" = true;
-            "**/.metals/**/*.{java,scala}" = true;
-          };
-        };
       };
     };
   };
