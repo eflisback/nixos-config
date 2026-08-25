@@ -6,7 +6,6 @@
     ./internationalisation.nix
     ./networking.nix
     ./nix-settings.nix
-    ./overlays.nix
     ./packages.nix
     ./programs.nix
     ./greeter.nix
