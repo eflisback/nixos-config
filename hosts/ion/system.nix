@@ -6,4 +6,5 @@
   addons.work.enable = true;
   addons.printing.enable = true;
   addons.docker.enable = true;
+  addons.steam.enable = true;
 }
