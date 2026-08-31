@@ -86,6 +86,8 @@ in
         "NIXOS_OZONE_WL,1"
       ];
 
+      xwayland.force_zero_scaling = true;
+
       # Clear GDM's leftover ghost cursor via a DPMS cycle.
       exec-once = [
         "hyprctl dispatch dpms off && sleep 1 && hyprctl dispatch dpms on"
