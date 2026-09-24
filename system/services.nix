@@ -11,5 +11,7 @@
 
     power-profiles-daemon.enable = true;
     upower.enable = true;
+
+    tailscale.enable = true;
   };
 }

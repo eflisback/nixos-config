@@ -34,6 +34,7 @@
       just
       nixd
       nixfmt
+      verifpal
     ];
 
     nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
