@@ -139,6 +139,15 @@ in
         "workspaces, 1, 2, default, slide"
       ];
 
+      # Kitty 0.49+ remembers "maximized" and re-requests it on every new window.
+      windowrule = [
+        {
+          name = "suppress-maximize";
+          "match:class" = ".*";
+          suppress_event = "maximize";
+        }
+      ];
+
       "$mod" = "SUPER";
 
       bind = [
