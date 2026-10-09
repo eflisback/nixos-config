@@ -30,6 +30,9 @@
     fsType = "ext4";
   };
 
+  boot.initrd.luks.devices."cryptroot".device =
+    "/dev/disk/by-partuuid/69ee0424-149f-46b0-8cfe-181d4f218f65";
+
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/9485-7CFB";
     fsType = "vfat";
