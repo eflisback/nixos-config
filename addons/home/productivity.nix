@@ -26,11 +26,11 @@
       rtk
       android-studio
       arduino-ide
-      godot-mono
+      # godot-mono
       dotnet-sdk
       blender
       gimp
-      audacity
+      # audacity
       just
       nixd
       nixfmt
